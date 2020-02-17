@@ -29,7 +29,8 @@ datosReservas();
 /*---------------MENU ALTA-------------*/
 
 var menuAltaCliente = document.getElementById("altaCliente");
-menuAltaCliente.addEventListener("click", mostrarAltaCliente, false);
+menuAltaCliente.click(mostrarAltaCliente);
+
 
 var menuAltaReserva = document.getElementById("altaReserva");
 menuAltaReserva.addEventListener("click", mostrarAltaReserva, false);
@@ -181,8 +182,8 @@ botonCancelarProveedorMod.addEventListener("click", cancelarModificarProveedor, 
 
 /*---------------ACEPTAR ALTA--------------------*/
 
-var botonAltaCliente = document.getElementById("btnAceptarAltaCliente");
-botonAltaCliente.addEventListener("click", aceptarAltaCliente, false);
+//var botonAltaCliente = document.getElementById("btnAceptarAltaCliente");
+//botonAltaCliente.addEventListener("click", aceptarAltaCliente, false);
 
 var botonAltaReserva = document.getElementById("btnAceptarAltaReserva");
 botonAltaReserva.addEventListener("click", aceptarAltaReserva, false);
@@ -1994,8 +1995,20 @@ function mostrarListadoActRes() {
 
 //Mostrar formulario cliente(anadir los otros formularios mientras los vais creando)
 function mostrarAltaCliente() {
-    esconderTodosLosFormularios();
-    frmAltaCliente.style.display = "block";
+    alert("asdasd");
+    $("form:not('#frmAltaCliente')").parent("fieldset").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmAltaCliente').size() == 0) {
+        $("<div>").appendTo('#formularios').load("Clientes/altaCliente.html",
+            function() {
+                $.getScript("Clientes/altaCliente.js");
+            });
+
+    } else {
+        // Lo muestro si está oculto
+        $('#frmAltaCliente').parent().show("normal");
+}
 }
 
 function mostrarAltaReserva() {
@@ -2078,7 +2091,7 @@ function mostrarListadoParkDisp() {
 }
 
 function esconderTodosLosFormularios(){
-    frmAltaCliente.style.display = "none";
+   // frmAltaCliente.style.display = "none";
     frmAltaReserva.style.display = "none";
     frmAltaProveedor.style.display = "none";
     frmAltaActividades.style.display = "none";
