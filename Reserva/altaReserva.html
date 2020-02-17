@@ -1,0 +1,59 @@
+<!-- FORMULARIO ALTA RESERVA -->
+<form class="form-horizontal" name="frmAltaReserva" id="frmAltaReserva">
+    <fieldset>
+      <legend>Alta de reservas</legend>
+      <div class="form-group">
+        <label class="col-1 control-label" for="txtId">ID</label>
+        <div class="col-10 col-md-6">
+          <input id="txtIdAlta" name="txtIdAlta" type="text" class="form-control input-md" required>
+        </div>
+        <label class="col-4 control-label" for="txtNum">Numero de personas</label>
+        <div class="col-10 col-md-6">
+          <input id="txtNumAlta" name="txtNum" type="number" min="0" max="6" class="form-control input-md" required>
+        </div>
+        <label class="col-4 control-label" for="txtEntrada">Dia de entrada</label>
+        <div class="col-10 col-md-6">
+            <input id="txtEntradaAlta" name="txtEntrada" type="date" class="form-control input-md" required>
+        </div>
+        <label class="col-4 control-label" for="txtSalida">Dia de salida</label>
+        <div class="col-10 col-md-6">
+            <input id="txtSalidaAlta" name="txtSalida" type="date" class="form-control input-md" required>
+        </div>
+        <label class="col-6 control-label" for="txtListaHab">Numero de habitacion: </label>
+        <div class="col-10 col-md-6">
+          <select name="selectListaHab" id="selectListaHab"></select>
+        </div>
+        <label class="col-4 control-label" for="txtReservaCliente">NIF Cliente: </label>
+        <div class="col-10 col-md-6">
+          <input id="txtReservaClienteAlta" name="txtReservaClienteAlta" type="text" class="form-control input-md" required>
+        </div>
+        <label class="col-md-4 control-label" for="txtListaReg">Regimen alimentario</label>
+        <div class="col-md-6">
+          <select name="selectListaReg" id="selectListaReg"></select>
+        </div>
+        <label class="col-1 control-label" for="txtReservaPark">Parking</label>
+        <div class="col-10 col-md-12">
+          <input id="siParking" name="estadoParking" type="radio" >Si
+          <input id="noParking" name="estadoParking" type="radio" checked>No
+        </div>
+        <div class="col-10 col-md-6">
+          <select name="selectListaParking" id="selectListaParking"></select>
+        </div>
+        <label class="col-1 control-label" for="txtReservaActividad">Actividades</label>
+        <div class="col-10 col-md-12">
+          <input id="siActividad" name="estadoActividad" type="radio" >Si
+          <input id="noActividad" name="estadoActividad" type="radio" checked>No
+        </div>
+        <div class="col-10 col-md-6">
+          <select name="selectListaActividad" id="selectListaActividad" multiple></select>
+        </div>
+        <label class="col-1 control-label" for="btnAceptar"></label>
+        <div class="col-12 col-md-6">
+          <input type="button" id="btnComprobarDatos" name="btnComprobarDatos" class="btn btn-info col-8" value="Comprobar Datos">
+          <input type="button" id="btnAceptarAltaReserva" name="btnAceptarAltaReserva" class="btn btn-success col-3" value="Alta">
+        </div>
+        <label class="col-1 control-label"></label>
+        <div class="col-10 col-md-6" id="divReservaComprobada"><p id="p1"></p><p id="p2"></p><p id=p3></p></div>
+      </div>
+    </fieldset>
+  </form>
