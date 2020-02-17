@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Sancreek&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Vidaloka&display=swap');
+
+body{
+  background-image: url('./img/fondoMadera.jpg');
+}
+
+a{
+  color: #e08585;
+}
+
+a:hover{
+ color: #f5d6d6;
+}
+
+form{
+  display: none;
+  margin-left: 35%;
+}
+
+.dropdown-submenu{
+  position: relative;
+}
+
+.dropdown-submenu a::after{
+  transform: rotate(-90deg);
+  position: absolute;
+  right: 6px;
+  top: .8em;
+}
+
+.dropdown-submenu .dropdown-menu{
+  top: 0;
+  left: 100%;
+  margin-left: .1rem;
+  margin-right: .1rem;
+}
+
+.error{
+  background-color:red;
+}
+
+#menuPrincipal{
+  margin: 0 auto;
+  margin-bottom: 50px;
+  border: 12px solid #710000;
+  border-radius: 40px;
+  width: 60vw;
+  background-color: rgb(255, 255, 255, 0.7);
+  box-shadow: 10px 10px 15px black;
+}
+
+ul{
+  background-color: #710000;
+}
+
+.jumbotron{
+  margin-top: -40px;
+  padding-bottom: 30px;
+  background-color: rgb(0, 51, 0, 0.5);
+}
+
+.jumbotron h2{
+  opacity: 1;
+  font-family: 'Sancreek', cursive;
+  color: #009900;
+}
+
+.jumbotron p{
+  opacity: 1;
+  font-family: 'Vidaloka', serif;
+  color: #009900;
+}
+
+.jumboIzq{
+  display: inline-block;
+}
+
+img{
+  float: right;
+  width: 130px;
+  margin-top: -15px;
+}
+
+select{
+  width: 100%;
+}
+
+form{
+  padding: 15px;
+  font-size: 14px;
+}
