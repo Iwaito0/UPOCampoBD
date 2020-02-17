@@ -1,0 +1,63 @@
+<!-- FORMULARIO MODIFICAR RESERVA -->
+<form class="form-horizontal" name="frmModificarReserva" id="frmModificarReserva">
+    <fieldset>
+      <legend>Modificar reservas</legend>
+      <div class="form-group">
+        <label class="col-1 control-label" for="txtId">ID</label>
+        <div class="col-10 col-md-6">
+          <input id="txtIdModificar" name="txtId" type="text" class="form-control input-md" required>
+          <br>
+          <input type="button" id="btnSeleccionarReserva" name="btnSeleccionarReserva" class="btn btn-primary" value="Seleccionar">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-4 control-label" for="txtNum">Numero de personas</label>
+        <div class="col-10 col-md-6">
+          <input id="txtNumModificar" name="txtNum" type="number" min="0" max="4" class="form-control input-md" required disabled>
+        </div>
+      </div>
+      <label class="col-6 control-label" for="txtListaHab">Numero de habitacion: </label>
+        <div class="col-10 col-md-6">
+          <select name="selectListaHabModificar" id="selectListaHabModificar"></select>
+        </div>
+      <label class="col-md-4 control-label" for="txtListaReg">Regimen alimentario</label>
+      <div class="col-md-6">
+        <select name="selectListaRegModificar" id="selectListaRegModificar"></select>
+      </div>
+      <div class="form-group">
+        <label class="col-4 control-label" for="txtEntrada">Dia de entrada</label>
+        <div class="col-10 col-md-6">
+          <input id="txtEntradaModificar" name="txtEntrada" type="date" class="form-control input-md" required disabled>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-4 control-label" for="txtSalida">Dia de salida</label>
+        <div class="col-10 col-md-6">
+          <input id="txtSalidaModificar" name="txtSalida" type="date" class="form-control input-md" required disabled>
+        </div>
+      </div>
+      <label class="col-1 control-label" for="txtReservaPark">Parking</label>
+      <div class="col-10 col-md-12">
+        <input id="siParkingMod" name="estadoParkingModificar" type="radio" >Si
+        <input id="noParkingMod" name="estadoParkingModificar" type="radio" checked>No
+      </div>
+      <div class="col-10 col-md-6">
+        <select name="selectListaParkingModificar" id="selectListaParkingModificar"></select>
+      </div>
+      <label class="col-1 control-label" for="txtReservaActividad">Actividades</label>
+      <div class="col-10 col-md-12">
+        <input id="siActividadMod" name="estadoActividadModificar" type="radio" >Si
+        <input id="noActividadMod" name="estadoActividadModificar" type="radio" checked>No
+      </div>
+      <div class="col-10 col-md-6">
+        <select name="selectListaActividadModificar" id="selectListaActividadModificar" multiple></select>
+      </div>
+      <div class="form-group">
+        <label class="col-1 control-label" for="btnAceptar"></label>
+        <div class="col-10 col-md-6">
+          <input type="button" id="btnAceptarModificarReserva" name="btnAceptarModificarReserva" class="btn btn-info col-6" value="Modificar" disabled/>
+          <input type="button" id="btnCancelarModificarReserva" name="btnCancelarModificarReserva" class="btn btn-secondary col-5" value="Cancelar" disabled/>
+        </div>
+      </div>
+    </fieldset>
+  </form>
