@@ -1,0 +1,33 @@
+ <!-- FORMULARIO MODIFICAR PROVEEDOR -->
+ <form class="form-horizontal" name="frmModificaProveedor" id="frmModificaProveedor">
+    <fieldset>
+      <legend>Modificacion de proveedores</legend>
+      <div class="form-group">
+        <label class="col-1 control-label" for="txtCif">CIF</label>
+        <div class="col-10 col-md-6">
+          <input id="txtCifModifica" name="txtCif" type="text" class="form-control input-md" required>
+          <br>
+          <input type="button" id="btnSelecionarProveedor" name="btnSelecionarProveedor" class="btn btn-primary" value="Selecionar">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-1 control-label" for="txtNombre">Nombre</label>
+        <div class="col-10 col-md-6">
+          <input id="txtNombreProveedorModifica" name="txtNombre" type="text" class="form-control input-md" required disabled>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-1 control-label" for="txtTelefono">Telefono</label>
+        <div class="col-10 col-md-6">
+          <input id="txtTelefonoProveedorModifica" name="txtTelefono" type="text" class="form-control input-md" required disabled>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-1 control-label" for="btnAceptar"></label>
+        <div class="col-10 col-md-6">
+          <input type="button" id="btnModificarProveedor" name="btnModificarProveedor" class="btn btn-info col-6" value="Modificar" disabled>
+          <input type="button" id="btnCancelarProveedor" name="btnCancelarProveedor" class="btn btn-secondary col-5" value="Cancelar" disabled>               
+        </div>
+      </div>
+    </fieldset>
+  </form>
