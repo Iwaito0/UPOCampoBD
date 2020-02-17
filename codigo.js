@@ -28,8 +28,14 @@ datosReservas();
 
 /*---------------MENU ALTA-------------*/
 
+<<<<<<< HEAD
 //var menuAltaCliente = document.getElementById("altaCliente");
 $("#altaCliente").click(mostrarAltaCliente);
+=======
+var menuAltaCliente = document.getElementById("altaCliente");
+menuAltaCliente.click(mostrarAltaCliente);
+
+>>>>>>> 93e4caf6902c8548c313ea6b12842cf817fed0c9
 
 /*
 var menuAltaReserva = document.getElementById("altaReserva");
@@ -184,7 +190,11 @@ botonCancelarProveedorMod.addEventListener("click", cancelarModificarProveedor, 
 
 //var botonAltaCliente = document.getElementById("btnAceptarAltaCliente");
 //botonAltaCliente.addEventListener("click", aceptarAltaCliente, false);
+<<<<<<< HEAD
 /*
+=======
+
+>>>>>>> 93e4caf6902c8548c313ea6b12842cf817fed0c9
 var botonAltaReserva = document.getElementById("btnAceptarAltaReserva");
 botonAltaReserva.addEventListener("click", aceptarAltaReserva, false);
 
@@ -1996,7 +2006,11 @@ function mostrarListadoActRes() {
 //Mostrar Formularios
 
 //Mostrar formulario cliente(anadir los otros formularios mientras los vais creando)
+<<<<<<< HEAD
 */function mostrarAltaCliente() {
+=======
+function mostrarAltaCliente() {
+>>>>>>> 93e4caf6902c8548c313ea6b12842cf817fed0c9
     alert("asdasd");
     $("form:not('#frmAltaCliente')").parent("fieldset").hide("normal");
 
@@ -2006,6 +2020,15 @@ function mostrarListadoActRes() {
             function() {
                 $.getScript("Clientes/altaCliente.js");
             });
+<<<<<<< HEAD
+=======
+
+    } else {
+        // Lo muestro si está oculto
+        $('#frmAltaCliente').parent().show("normal");
+}
+}
+>>>>>>> 93e4caf6902c8548c313ea6b12842cf817fed0c9
 
     } else {
         // Lo muestro si está oculto
