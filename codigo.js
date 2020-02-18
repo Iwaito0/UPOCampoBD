@@ -1998,7 +1998,7 @@ function mostrarListadoActRes() {
 
 //Mostrar Formularios
 
-//Mostrar formulario cliente(anadir los otros formularios mientras los vais creando)
+//Mostraraa formulario cliente(anadir los otros formularios mientras los vais creando)
 */
 function mostrarAltaCliente() {
     $("#formularios div:not('#frmAltaCliente')").hide("normal");
