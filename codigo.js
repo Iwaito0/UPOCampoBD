@@ -1,5 +1,5 @@
-//# sourceURL=codigo.js;
 "use strict";
+//# sourceURL=codigo.js;
 //Programa Princiapl
 var oUPOCampo = new UpoCampo();
 var divListado = document.getElementById("listado");
@@ -30,7 +30,11 @@ datosReservas();
 /*---------------MENU ALTA-------------*/
 
 //var menuAltaCliente = document.getElementById("altaCliente");
-$("#altaCliente").click(mostrarAltaCliente);
+//$("#altaCliente").click(mostrarAltaCliente);
+$(function() {
+    $("#altaCliente").click(function() { mostrarAltaCliente(); });
+
+});
 /*var menuAltaCliente = document.getElementById("altaCliente");
 menuAltaCliente.click(mostrarAltaCliente);*/
 /*
