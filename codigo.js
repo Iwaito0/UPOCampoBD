@@ -2001,19 +2001,20 @@ function mostrarListadoActRes() {
 //Mostrar formulario cliente(anadir los otros formularios mientras los vais creando)
 */
 function mostrarAltaCliente() {
-    //$("form:not('#frmAltaCliente')").parent("fieldset").hide("normal");
+    $("#formularios div:not('#frmAltaCliente')").hide("normal");
 
     // Verifico si ya he cargado el formulario antes
-    if ($('#frmAltaCliente').size() == 0) {
-        $("<div>").appendTo('#formularios').load("Clientes/altaCliente.html",
+    if ($('#frmAltaCliente').size == 0) {
+        alert("aa");
+        $("#formularios").load("Clientes/altaCliente.html",
             function() {
-                $.getScript("Clientes/altaCliente.js");
+                $.getScript("js/altaCliente.js");
             });
 
-    } 
-    else {
+    } else {
+        alert("dd")
         // Lo muestro si está oculto
-        $('#frmAltaCliente').parent().show("normal");
+        $('#frmAltaCliente').show("normal");
     }
 }
 
