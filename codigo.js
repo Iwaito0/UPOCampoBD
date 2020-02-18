@@ -29,14 +29,8 @@ datosReservas();
 
 /*---------------MENU ALTA-------------*/
 
-//var menuAltaCliente = document.getElementById("altaCliente");
-//$("#altaCliente").click(mostrarAltaCliente);
-$(function() {
-    $("#altaCliente").click(function() { mostrarAltaCliente(); });
-
-});
-/*var menuAltaCliente = document.getElementById("altaCliente");
-menuAltaCliente.click(mostrarAltaCliente);*/
+var menuAltaCliente = document.getElementById("altaCliente");
+menuAltaCliente.addEventListener("click", mostrarAltaCliente);
 /*
 var menuAltaReserva = document.getElementById("altaReserva");
 menuAltaReserva.addEventListener("click", mostrarAltaReserva, false);
@@ -2005,7 +1999,6 @@ function mostrarListadoActRes() {
 //Mostrar formulario cliente(anadir los otros formularios mientras los vais creando)
 */
 function mostrarAltaCliente() {
-  alert("asdasd");
     $("form:not('#frmAltaCliente')").parent("fieldset").hide("normal");
 
     // Verifico si ya he cargado el formulario antes
