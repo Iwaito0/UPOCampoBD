@@ -30,7 +30,9 @@ datosReservas();
 /*---------------MENU ALTA-------------*/
 
 var menuAltaCliente = document.getElementById("altaCliente");
-menuAltaCliente.addEventListener("click", mostrarAltaCliente);
+$("#altaCliente").click(mostrarAltaCliente);
+/*var menuAltaCliente = document.getElementById("altaCliente");
+menuAltaCliente.click(mostrarAltaCliente);*/
 /*
 var menuAltaReserva = document.getElementById("altaReserva");
 menuAltaReserva.addEventListener("click", mostrarAltaReserva, false);
@@ -1999,7 +2001,7 @@ function mostrarListadoActRes() {
 //Mostrar formulario cliente(anadir los otros formularios mientras los vais creando)
 */
 function mostrarAltaCliente() {
-    $("form:not('#frmAltaCliente')").parent("fieldset").hide("normal");
+    //$("form:not('#frmAltaCliente')").parent("fieldset").hide("normal");
 
     // Verifico si ya he cargado el formulario antes
     if ($('#frmAltaCliente').size() == 0) {
