@@ -56,12 +56,8 @@ $("#bajaProveedor").click(mostrarBajaProveedor);
 
 $("#modificarCliente").click(mostrarModificarCliente);
 
+$("#modificarReserva").click(mostrarModificarReserva);
 /*
-var menuModificarCliente = document.getElementById("modificarCliente");
-menuModificarCliente.addEventListener("click", mostrarModificarCliente, false);
-
-var menuModificarReserva = document.getElementById("modificarReserva");
-menuModificarReserva.addEventListener("click", mostrarModificarReserva, false);
 
 var menuModificarActividad = document.getElementById("modificarActividad");
 menuModificarActividad.addEventListener("click", mostrarModificarActividad, false);
@@ -2184,21 +2180,29 @@ function mostrarModificarCliente()
 		$("#frmModificarCliente").show("normal");
 	}
 }
-/*
-function mostrarModificarCliente() {
-    esconderTodosLosFormularios();
-	frmModificarCliente.style.display = "block";
-}
 
-function mostrarModificarReserva() {
-    esconderTodosLosFormularios();
-	frmModificarReserva.style.display = "block";
-    mostrarHabitaciones(selectParkMod);
-    mostrarRegimenes(selectRegMod);
-    habDesParkingMod();
-    habDesActividadMod();
-    cancelarModificarReserva();
+function mostrarModificarReserva()
+{
+    $("#formularios form:not('#frmModificarReserva')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmModificarReserva').length == 0)
+    {
+        $("#formularios").load("Reserva/modificarReserva.html",
+            function()
+            {
+                $.getScript("Reserva/js/modificarReserva.js");
+                $("#frmModificarReserva").show("normal");
+            });
+    }
+    else
+    {
+        // Lo muestro si está oculto
+        $("#frmModificarReserva").show("normal");
+    }
 }
+/*
+
 function mostrarModificarActividad(){
     esconderTodosLosFormularios();
     frmModificaActividades.style.display = "block";
