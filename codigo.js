@@ -2225,13 +2225,41 @@ function mostrarListadoRes(){
 }
 
 function mostrarListadoHabDisp() {
-	esconderTodosLosFormularios();
-	frmListadoHabDispFecha.style.display = "block";
+    $("#formularios form:not('#frmListadoHabDispFecha')").hide("normal");
+ 
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmListadoHabDispFecha').length == 0) {
+
+        $("#formularios").load("Habitaciones/listadoHabitacionesFecha.html",
+            function() {
+                $.getScript("js/listadoHabitaciones.js");
+                $('#frmListadoHabDispFecha').show("normal");
+            });
+        }
+        else
+        {
+    // Lo muestro si está oculto
+    $('#frmListadoHabDispFecha').show("normal");
+    }
 }
 
 function mostrarListadoParkDisp() {
-    esconderTodosLosFormularios();
-    frmListadoParkDispFecha.style.display = "block";
+    $("#formularios form:not('#frmListadoParkDispFecha')").hide("normal");
+ 
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmListadoParkDispFecha').length == 0) {
+
+        $("#formularios").load("Parking/listadoParkingFecha.html",
+            function() {
+                $.getScript("js/frmListadoParkDispFecha.js");
+                $('#frmListadoParkDispFecha').show("normal");
+            });
+        }
+        else
+        {
+    // Lo muestro si está oculto
+    $('#frmListadoParkDispFecha').show("normal");
+    }
 }
 /*
 function esconderTodosLosFormularios(){
