@@ -31,14 +31,12 @@ datosReservas();
 
 var menuAltaCliente = document.getElementById("altaCliente");
 $("#altaCliente").click(mostrarAltaCliente);
-/*var menuAltaCliente = document.getElementById("altaCliente");
-menuAltaCliente.click(mostrarAltaCliente);*/
+
+var menuAltaProveedor = document.getElementById("altaProveedor");
+$("#altaProveedor").click(mostrarAltaProveedor);
 /*
 var menuAltaReserva = document.getElementById("altaReserva");
 menuAltaReserva.addEventListener("click", mostrarAltaReserva, false);
-
-var menuAltaProveedor = document.getElementById("altaProveedor");
-menuAltaProveedor.addEventListener("click", mostrarAltaProveedor, false);
 
 var menuAltaActividad = document.getElementById("altaActividad");
 menuAltaActividad.addEventListener("click", mostrarAltaActividad, false);
@@ -2017,7 +2015,24 @@ function mostrarAltaCliente() {
     $('#frmAltaCliente').show("normal");
     }
 }
+function mostrarAltaProveedor() {
+    $("#formularios form:not('#frmAltaProveedor')").hide("normal");
+ 
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmAltaProveedor').length == 0) {
 
+        $("#formularios").load("Proveedor/altaProveedor.html",
+            function() {
+                $.getScript("js/altaProveedor.js");
+                $('#frmAltaProveedor').show("normal");
+            });
+        }
+        else
+        {
+    // Lo muestro si está oculto
+    $('#frmAltaProveedor').show("normal");
+    }
+}
 /*
 function mostrarAltaReserva() {
     esconderTodosLosFormularios();
@@ -2026,11 +2041,6 @@ function mostrarAltaReserva() {
     habDesParking();
     habDesActividad();
     mostrarRegimenes(selectRegAlta);
-}
-
-function mostrarAltaProveedor() {
-    esconderTodosLosFormularios();
-	frmAltaProveedor.style.display = "block";
 }
 
 function mostrarBajaCliente() {
