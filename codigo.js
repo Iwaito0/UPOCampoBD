@@ -29,17 +29,14 @@ datosReservas();
 
 /*---------------MENU ALTA-------------*/
 
-var menuAltaCliente = document.getElementById("altaCliente");
 $("#altaCliente").click(mostrarAltaCliente);
 
-var menuAltaProveedor = document.getElementById("altaProveedor");
 $("#altaProveedor").click(mostrarAltaProveedor);
-/*
-var menuAltaReserva = document.getElementById("altaReserva");
-menuAltaReserva.addEventListener("click", mostrarAltaReserva, false);
 
-var menuAltaActividad = document.getElementById("altaActividad");
-menuAltaActividad.addEventListener("click", mostrarAltaActividad, false);
+$("#altaActividad").click(mostrarAltaActividad);
+
+$("#altaReserva").click(mostrarAltaReserva);
+/*
 
 var divReservaComprobada = document.getElementById("divReservaComprobada");
 
@@ -2031,6 +2028,25 @@ function mostrarAltaProveedor() {
         {
     // Lo muestro si está oculto
     $('#frmAltaProveedor').show("normal");
+    }
+}
+
+function mostrarAltaActividad(){
+    $("#formularios form:not('#frmAltaActividades')").hide("normal");
+ 
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmAltaActividades').length == 0) {
+
+        $("#formularios").load("Actividades/altaActividades.html",
+            function() {
+                $.getScript("js/altaActividad.js");
+                $('#frmAltaActividades').show("normal");
+            });
+        }
+        else
+        {
+    // Lo muestro si está oculto
+    $('#frmAltaActividades').show("normal");
     }
 }
 /*
