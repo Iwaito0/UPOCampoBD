@@ -3,7 +3,7 @@ $("#btnAceptarAltaCliente").click(aceptarAltaCliente);
 
 
 function aceptarAltaCliente(){
-    let sMensaje="";
+    var sMensaje="";
     // Recoger valores del formulario
     let sDni = frmAltaCliente.txtNifAlta.value.trim();
     let sNombre = frmAltaCliente.txtNombreClienteAlta.value.trim();
@@ -27,9 +27,8 @@ function aceptarAltaCliente(){
     else{
         frmAltaCliente.txtNombreClienteAlta.classList.remove("error");  
     }
-
-
-    if(!/^(\+34|0034|34)?[6|7|9][0-9]{8}$/g.test(iTelefono)){
+    if(!/^(\+34|0034|34)?[6|7|9][0-9]{8}$/g.test(iTelefono))
+    {
         sMensaje+="El campo telefono esta mal (Recuerde poner el prefijo )\n";
         frmAltaCliente.txtTelefonoClienteAlta.classList.add("error");
     }
@@ -61,12 +60,6 @@ function aceptarAltaCliente(){
     }
 
     if(sMensaje==""){
-   /* // Creamos el objeto cliente
-   //creo el php con una llamada por ejemplo post
-    // Alta de cliente en UPOCAMPO
-    sMensaje = oUPOCampo.altaCliente(oCliente);
-    alert(sMensaje);    
-    frmAltaCliente.reset(); */   
     var oCliente = {
         DNI: sDni,
         Nombre: sNombre,
@@ -75,7 +68,7 @@ function aceptarAltaCliente(){
         Email: sEmail,
         numTarjeta: iNumTarjeta
     };
-    //  IMPORTANTE: EL NOMBRE DE LOS PARAMETROS ENVIADOS DIFIERE EN EL CASO DEL OBJETO LITERAL
+    console.log(oCliente);
 
     var sParametros = "datos=" + JSON.stringify(oCliente);
 
@@ -84,4 +77,7 @@ function aceptarAltaCliente(){
     else{
         alert(sMensaje);
     }
+}
+function respuestaAltaCliente(){
+console.log("entrar");
 }
