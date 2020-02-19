@@ -2176,11 +2176,7 @@ function mostrarModificarProveedor(){
     esconderTodosLosFormularios();
     frmModificaProveedor.style.display="block";
 }
-function mostrarAltaActividad(){
-    esconderTodosLosFormularios();
-    frmAltaActividades.style.display = "block";  
-}
-
+*/
 function mostrarListadoCliRes(){
 	esconderTodosLosFormularios();
 	frmListadoCliResFecha.style.display = "block";
@@ -2200,7 +2196,7 @@ function mostrarListadoParkDisp() {
     esconderTodosLosFormularios();
     frmListadoParkDispFecha.style.display = "block";
 }
-
+/*
 function esconderTodosLosFormularios(){
    // frmAltaCliente.style.display = "none";
     frmAltaReserva.style.display = "none";
