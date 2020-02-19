@@ -2171,10 +2171,10 @@ function mostrarModificarCliente()
 	// Verifico si ya he cargado el formulario antes
 	if ($('#frmModificarCliente').length == 0)
 	{
-		$("#formularios").load("Cliente/modificarCliente.html",
+		$("#formularios").load("Clientes/modificarCliente.html",
 			function()
 			{
-				$.getScript("Cliente/js/modificarCliente.js");
+				$.getScript("Clientes/js/modificarCliente.js");
 				$("#frmModificarCliente").show("normal");
 			});
 	}
