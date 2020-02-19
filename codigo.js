@@ -1997,24 +1997,24 @@ function mostrarListadoActRes() {
 }
 
 //Mostrar Formularios
-
-//Mostraraa formulario cliente(anadir los otros formularios mientras los vais creando)
 */
 function mostrarAltaCliente() {
-    $("#formularios div:not('#frmAltaCliente')").hide("normal");
-
+    $("#formularios form:not('#frmAltaCliente')").hide("normal");
+ 
     // Verifico si ya he cargado el formulario antes
-    if ($('#frmAltaCliente').size == 0) {
-        alert("aa");
+    if ($('#frmAltaCliente').length == 0) {
+
         $("#formularios").load("Clientes/altaCliente.html",
             function() {
                 $.getScript("js/altaCliente.js");
+                $('#frmAltaCliente').show("normal");
             });
+        }
+        else
+        {
 
-    } else {
-        alert("dd")
-        // Lo muestro si está oculto
-        $('#frmAltaCliente').show("normal");
+    // Lo muestro si está oculto
+    $('#frmAltaCliente').show("normal");
     }
 }
 
