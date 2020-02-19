@@ -1,12 +1,6 @@
 "use strict"
 $("#btnAceptarAltaCliente").click(aceptarAltaCliente);
 
-function aceptarAltaCliente(){
-    alert("holi");
-}
-
-
-
 
 function aceptarAltaCliente(){
     let sMensaje="";
@@ -67,15 +61,25 @@ function aceptarAltaCliente(){
     }
 
     if(sMensaje==""){
-        alert("bieeeen");
    /* // Creamos el objeto cliente
    //creo el php con una llamada por ejemplo post
-    let oCliente = new Cliente(sDni, sNombre, iTelefono, sDireccion, sEmail, iNumTarjeta);
-
     // Alta de cliente en UPOCAMPO
     sMensaje = oUPOCampo.altaCliente(oCliente);
     alert(sMensaje);    
     frmAltaCliente.reset(); */   
+    var oCliente = {
+        DNI: sDni,
+        Nombre: sNombre,
+        Telefono: iTelefono,
+        Direccion: sDireccion,
+        Email: sEmail,
+        numTarjeta: iNumTarjeta
+    };
+    //  IMPORTANTE: EL NOMBRE DE LOS PARAMETROS ENVIADOS DIFIERE EN EL CASO DEL OBJETO LITERAL
+
+    var sParametros = "datos=" + JSON.stringify(oCliente);
+
+    $.post("Clientes/altacliente.php", sParametros, respuestaAltaCliente, 'json');
     }
     else{
         alert(sMensaje);
