@@ -53,6 +53,9 @@ $("#bajaActividad").click(mostrarBajaActividad);
 $("#bajaProveedor").click(mostrarBajaProveedor);
 
 /*---------------MENU MODIFICAR-------------*/
+
+$("#modificarCliente").click(mostrarModificarCliente);
+
 /*
 var menuModificarCliente = document.getElementById("modificarCliente");
 menuModificarCliente.addEventListener("click", mostrarModificarCliente, false);
@@ -2159,6 +2162,27 @@ function mostrarBajaProveedor(){
     // Lo muestro si está oculto
     $('#frmBajaProveedores').show("normal");
     }
+}
+
+function mostrarModificarCliente()
+{
+	$("#formularios form:not('#frmModificarCliente')").hide("normal");
+
+	// Verifico si ya he cargado el formulario antes
+	if ($('#frmModificarCliente').length == 0)
+	{
+		$("#formularios").load("Clientes/modificarCliente.html",
+			function()
+			{
+				$.getScript("Clientes/js/modificarCliente.js");
+				$("#frmModificarCliente").show("normal");
+			});
+	}
+	else
+	{
+		// Lo muestro si está oculto
+		$("#frmModificarCliente").show("normal");
+	}
 }
 /*
 function mostrarModificarCliente() {
