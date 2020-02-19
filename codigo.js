@@ -69,7 +69,7 @@ menuModificarProveedor.addEventListener("click", mostrarModificarProveedor, fals
 /*--------------MENU LISTAR POR FILTRO--------------*/
 
 /*--------------POR FECHA--------------*/
-/*
+
 var menuListarCliRes = document.getElementById("listadoClientesPorFecha");
 menuListarCliRes.addEventListener("click", mostrarListadoCliRes, false);
 
@@ -82,6 +82,15 @@ menuListarHabDispFecha.addEventListener("click", mostrarListadoHabDisp, false);
 var menuListarParkDispFecha = document.getElementById("listadoParkDispFecha");
 menuListarParkDispFecha.addEventListener("click", mostrarListadoParkDisp, false);
 
+
+$("#bajaCliente").click(mostrarBajaCliente);
+
+$("#bajaReserva").click(mostrarBajaReserva);
+
+$("#bajaActividad").click(mostrarBajaActividad);
+
+$("#bajaProveedor").click(mostrarBajaProveedor);
+/*
 /*-------------POR RESERVA-------------*/
 /*
 var menuListarParkRes = document.getElementById("listadoParkingReserva");
