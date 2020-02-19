@@ -2187,13 +2187,41 @@ function mostrarModificarProveedor(){
 }
 */
 function mostrarListadoCliRes(){
-	esconderTodosLosFormularios();
-	frmListadoCliResFecha.style.display = "block";
+    $("#formularios form:not('#frmListadoCliResFecha')").hide("normal");
+ 
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmListadoCliResFecha').length == 0) {
+
+        $("#formularios").load("Clientes/listadoClienteFecha.html",
+            function() {
+                $.getScript("js/listadoClienteFecha.js");
+                $('#frmListadoCliResFecha').show("normal");
+            });
+        }
+        else
+        {
+    // Lo muestro si está oculto
+    $('#frmListadoCliResFecha').show("normal");
+    }
 }
 
 function mostrarListadoRes(){
-	esconderTodosLosFormularios();
-	frmListadoResFecha.style.display = "block";
+    $("#formularios form:not('#frmListadoResFecha')").hide("normal");
+ 
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmListadoResFecha').length == 0) {
+
+        $("#formularios").load("Reserva/listadoReservaFecha.html",
+            function() {
+                $.getScript("js/listadoReservaFecha.js");
+                $('#frmListadoResFecha').show("normal");
+            });
+        }
+        else
+        {
+    // Lo muestro si está oculto
+    $('#frmListadoResFecha').show("normal");
+    }
 }
 
 function mostrarListadoHabDisp() {
