@@ -7,7 +7,7 @@ function aceptarAltaCliente(){
 
 
 
-/*
+
 function aceptarAltaCliente(){
     let sMensaje="";
     // Recoger valores del formulario
@@ -43,8 +43,7 @@ function aceptarAltaCliente(){
         frmAltaCliente.txtTelefonoClienteAlta.classList.remove("error");  
     }
     
-    if(!/[a-zA-Z1-9À-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-Z1-9À-ÖØ-öø-ÿ]+\.?)*/
-    /*.test(sDireccion)){
+    if(!/[a-zA-Z1-9À-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-Z1-9À-ÖØ-öø-ÿ]+\.?)*/.test(sDireccion)){
         sMensaje+="El campo direccion esta mal\n";
         frmAltaCliente.txtDireccionAlta.classList.add("error");
     }
@@ -52,7 +51,7 @@ function aceptarAltaCliente(){
         frmAltaCliente.txtDireccionAlta.classList.remove("error");  
     }
 
-    if(!/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/g.test(sEmail)){
+    if(!/^[a-zA-Z0-9.!#$%&’*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/g.test(sEmail)){
         sMensaje+="El campo email esta mal\n";
         frmAltaCliente.txtEmailAlta.classList.add("error");
     }
@@ -68,15 +67,17 @@ function aceptarAltaCliente(){
     }
 
     if(sMensaje==""){
-    // Creamos el objeto cliente
+        alert("bieeeen");
+   /* // Creamos el objeto cliente
+   //creo el php con una llamada por ejemplo post
     let oCliente = new Cliente(sDni, sNombre, iTelefono, sDireccion, sEmail, iNumTarjeta);
 
     // Alta de cliente en UPOCAMPO
     sMensaje = oUPOCampo.altaCliente(oCliente);
     alert(sMensaje);    
-    frmAltaCliente.reset();    
+    frmAltaCliente.reset(); */   
     }
     else{
         alert(sMensaje);
     }
-}*/
+}

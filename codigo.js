@@ -2006,7 +2006,7 @@ function mostrarAltaCliente() {
 
         $("#formularios").load("Clientes/altaCliente.html",
             function() {
-                $.getScript("js/altaCliente.js");
+                $.getScript("Clientes/js/altaCliente.js");
                 $('#frmAltaCliente').show("normal");
             });
         }
