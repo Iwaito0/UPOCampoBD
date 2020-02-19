@@ -186,6 +186,7 @@ botonCancelarProveedorMod.addEventListener("click", cancelarModificarProveedor, 
 
 /*---------------ACEPTAR ALTA--------------------*/
 
+
 /*
 var botonAltaReserva = document.getElementById("btnAceptarAltaReserva");
 botonAltaReserva.addEventListener("click", aceptarAltaReserva, false);
