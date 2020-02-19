@@ -57,13 +57,10 @@ $("#bajaProveedor").click(mostrarBajaProveedor);
 $("#modificarCliente").click(mostrarModificarCliente);
 
 $("#modificarReserva").click(mostrarModificarReserva);
-/*
 
-var menuModificarActividad = document.getElementById("modificarActividad");
-menuModificarActividad.addEventListener("click", mostrarModificarActividad, false);
+$("#modificarActividad").click(mostrarModificarActividad);
 
-var menuModificarProveedor = document.getElementById("modificarProveedor");
-menuModificarProveedor.addEventListener("click", mostrarModificarProveedor, false);
+$("#modificarProveedor").click(mostrarModificarProveedor);
 
 /*--------------MENU LISTAR POR FILTRO--------------*/
 
@@ -2201,17 +2198,49 @@ function mostrarModificarReserva()
         $("#frmModificarReserva").show("normal");
     }
 }
-/*
 
-function mostrarModificarActividad(){
-    esconderTodosLosFormularios();
-    frmModificaActividades.style.display = "block";
+function mostrarModificarActividad()
+{
+    $("#formularios form:not('#frmModificaActividades')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmModificaActividades').length == 0)
+    {
+        $("#formularios").load("Actividades/modificarActividades.html",
+            function()
+            {
+                $.getScript("Actividades/js/modificarActividades.js");
+                $("#frmModificaActividades").show("normal");
+            });
+    }
+    else
+    {
+        // Lo muestro si está oculto
+        $("#frmModificaActividades").show("normal");
+    }
 }
-function mostrarModificarProveedor(){
-    esconderTodosLosFormularios();
-    frmModificaProveedor.style.display="block";
+
+function mostrarModificarProveedor()
+{
+    $("#formularios form:not('#frmModificaProveedor')").hide("normal");
+
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmModificaProveedor').length == 0)
+    {
+        $("#formularios").load("Proveedor/modificarProveedor.html",
+            function()
+            {
+                $.getScript("Proveedor/js/modificarProveedor.js");
+                $("#frmModificaProveedor").show("normal");
+            });
+    }
+    else
+    {
+        // Lo muestro si está oculto
+        $("#frmModificaProveedor").show("normal");
+    }
 }
-*/
+
 function mostrarListadoCliRes(){
     $("#formularios form:not('#frmListadoCliResFecha')").hide("normal");
  
