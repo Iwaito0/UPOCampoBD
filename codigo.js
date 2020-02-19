@@ -39,20 +39,18 @@ $("#altaReserva").click(mostrarAltaReserva);
 /*
 
 var divReservaComprobada = document.getElementById("divReservaComprobada");
+*/
 
 /*---------------MENU BAJA-------------*/
-/*
-var menuBajaCliente = document.getElementById("bajaCliente");
-menuBajaCliente.addEventListener("click", mostrarBajaCliente, false);
 
-var menuBajaReserva = document.getElementById("bajaReserva");
-menuBajaReserva.addEventListener("click", mostrarBajaReserva, false);
 
-var menuBajaActividad = document.getElementById("bajaActividad");
-menuBajaActividad.addEventListener("click", mostrarBajaActividad, false);
+$("#bajaCliente").click(mostrarBajaCliente);
 
-var menuBajaProveedor = document.getElementById("bajaProveedor");
-menuBajaProveedor.addEventListener("click", mostrarBajaProveedor, false);
+$("#bajaReserva").click(mostrarBajaReserva);
+
+$("#bajaActividad").click(mostrarBajaActividad);
+
+$("#bajaProveedor").click(mostrarBajaProveedor);
 
 /*---------------MENU MODIFICAR-------------*/
 /*
@@ -2049,34 +2047,113 @@ function mostrarAltaActividad(){
     $('#frmAltaActividades').show("normal");
     }
 }
-/*
+
 function mostrarAltaReserva() {
-    esconderTodosLosFormularios();
-	frmAltaReserva.style.display = "block";
-    mostrarHabitaciones(selectParkLista);
-    habDesParking();
-    habDesActividad();
-    mostrarRegimenes(selectRegAlta);
+  
+    $("#formularios form:not('#frmAltaReserva')").hide("normal");
+ 
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmAltaReserva').length == 0) {
+
+        $("#formularios").load("Reserva/altaReserva.html",
+            function() {
+                $.getScript("js/altaReserva.js");
+                $('#frmAltaReserva').show("normal");
+                mostrarHabitaciones(selectParkLista);
+                habDesParking();
+                habDesActividad();
+                mostrarRegimenes(selectRegAlta);
+            });
+        }
+        else
+        {
+    // Lo muestro si está oculto
+    $('#frmAltaReserva').show("normal");
+    }
 }
 
 function mostrarBajaCliente() {
-    esconderTodosLosFormularios();
-	frmBajaCliente.style.display = "block";
+    $("#formularios form:not('#frmBajaCliente')").hide("normal");
+ 
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmBajaCliente').length == 0) {
+
+        $("#formularios").load("Clientes/bajaCliente.html",
+            function() {
+                $.getScript("js/bajaCliente.js");
+                $('#frmBajaCliente').show("normal");
+                mostrarHabitaciones(selectParkLista);
+                habDesParking();
+                habDesActividad();
+                mostrarRegimenes(selectRegAlta);
+            });
+        }
+        else
+        {
+    // Lo muestro si está oculto
+    $('#frmBajaCliente').show("normal");
+    }
 }
 
 function mostrarBajaReserva() {
-    esconderTodosLosFormularios();
-	frmBajaReserva.style.display = "block";
+    $("#formularios form:not('#frmBajaReserva')").hide("normal");
+ 
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmBajaReserva').length == 0) {
+
+        $("#formularios").load("Reserva/bajaReserva.html",
+            function() {
+                $.getScript("js/bajaReserva.js");
+                $('#frmBajaReserva').show("normal");
+                mostrarHabitaciones(selectParkLista);
+                habDesParking();
+                habDesActividad();
+                mostrarRegimenes(selectRegAlta);
+            });
+        }
+        else
+        {
+    // Lo muestro si está oculto
+    $('#frmBajaReserva').show("normal");
+    }
 }
 function mostrarBajaActividad(){
-    esconderTodosLosFormularios();
-    frmBajaActividad.style.display = "block";
+    $("#formularios form:not('#frmBajaActividad')").hide("normal");
+ 
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmBajaActividad').length == 0) {
+
+        $("#formularios").load("Actividades/bajaActividad.html",
+            function() {
+                $.getScript("js/bajaActividad.js");
+                $('#frmBajaActividad').show("normal");
+            });
+        }
+        else
+        {
+    // Lo muestro si está oculto
+    $('#frmBajaActividad').show("normal");
+    }
 }
 function mostrarBajaProveedor(){
-    esconderTodosLosFormularios();
-    frmBajaProveedores.style.display="block";
-}
+    $("#formularios form:not('#frmBajaProveedores')").hide("normal");
+ 
+    // Verifico si ya he cargado el formulario antes
+    if ($('#frmBajaProveedores').length == 0) {
 
+        $("#formularios").load("Proveedor/bajaProveedor.html",
+            function() {
+                $.getScript("js/bajaProveedor.js");
+                $('#frmBajaProveedores').show("normal");
+            });
+        }
+        else
+        {
+    // Lo muestro si está oculto
+    $('#frmBajaProveedores').show("normal");
+    }
+}
+/*
 function mostrarModificarCliente() {
     esconderTodosLosFormularios();
 	frmModificarCliente.style.display = "block";
