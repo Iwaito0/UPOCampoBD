@@ -2083,7 +2083,7 @@ function mostrarBajaCliente() {
 
         $("#formularios").load("Clientes/bajaCliente.html",
             function() {
-                $.getScript("js/bajaCliente.js");
+                $.getScript("Clientes/js/bajaCliente.js");
                 $('#frmBajaCliente').show("normal");
                 mostrarHabitaciones(selectParkLista);
                 habDesParking();
