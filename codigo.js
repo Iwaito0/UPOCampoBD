@@ -195,10 +195,8 @@ botonAltaActividad.addEventListener("click", aceptarAltaActividade, false);
 
 
 /*---------------ACEPTAR BAJA--------------------*/
-/*
-var botonBajaCliente = document.getElementById("btnAceptarBajaCliente");
-botonBajaCliente.addEventListener("click", aceptarBajaCliente, false);
 
+/*
 var botonBajaReserva = document.getElementById("btnAceptarBajaReserva");
 botonBajaReserva.addEventListener("click", aceptarBajaReserva, false);
 
@@ -623,18 +621,8 @@ function aceptarAltaActividade(){
 }
 
 /*-------------BAJA-------------*/
+
 /*
-function aceptarBajaCliente(){
-    // Recoger valores del formulario
-    let sNif = frmBajaCliente.txtNifBaja.value.trim();
-
-    // Baja de cliente en UPOCAMPO
-    let sMensaje = oUPOCampo.bajaCliente(sNif);
-
-    alert(sMensaje);
-    frmBajaCliente.reset();
-}
-
 function aceptarBajaReserva(){
     // Recoger valores del formulario
     let iID = frmBajaReserva.txtIdBaja.value.trim();
@@ -2083,7 +2071,7 @@ function mostrarBajaCliente() {
 
         $("#formularios").load("Clientes/bajaCliente.html",
             function() {
-                $.getScript("js/bajaCliente.js");
+                $.getScript("Clientes/js/bajaCliente.js");
                 $('#frmBajaCliente').show("normal");
                 mostrarHabitaciones(selectParkLista);
                 habDesParking();

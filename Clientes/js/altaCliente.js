@@ -51,13 +51,13 @@ function aceptarAltaCliente(){
     else{
         frmAltaCliente.txtEmailAlta.classList.remove("error");  
     }
-  /*  if(!/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$/.test(iNumTarjeta)){
+   if(!/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$/.test(iNumTarjeta)){
         sMensaje+="El campo del numero de la tarjeta esta mal(recuerde que son 16 numeros y que empieza por 4)\n";
         frmAltaCliente.txtNTarjetaAlta.classList.add("error");
     }
     else{
         frmAltaCliente.txtNTarjetaAlta.classList.remove("error");  
-    }*/
+    }
 
     if(sMensaje==""){
     var oCliente = {
@@ -68,10 +68,7 @@ function aceptarAltaCliente(){
         Email: sEmail,
         numTarjeta: iNumTarjeta
     };
-    console.log(oCliente);
-
     var sParametros = "datos=" + JSON.stringify(oCliente);
-    console.log(sParametros);
     $.post("Clientes/altacliente.php", sParametros, respuestaAltaCliente, 'json');
     }
     else{
@@ -79,5 +76,11 @@ function aceptarAltaCliente(){
     }
 }
 function respuestaAltaCliente(){
-console.log("entrar");
+    if (oDatos.error) {
+        alert(oDatos.mensaje);
+    } else {
+        alert(oDatos.mensaje);
+        frmAltaCliente.reset();
+        $("#frmAltaCliente").hide("normal");
+    }  
 }
