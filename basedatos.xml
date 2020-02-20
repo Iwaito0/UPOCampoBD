@@ -221,12 +221,12 @@
     <parkings>
         <parking>
             <id>1</id>
-            <precio>149.99</precio>
+            <precio>25</precio>
             <anchoEspecial>true</anchoEspecial>
         </parking>
         <parking>
             <id>2</id>
-            <precio>149.99</precio>
+            <precio>25</precio>
             <anchoEspecial>false</anchoEspecial>
         </parking>
         <parking>
@@ -428,62 +428,62 @@
         <actividad>
             <id>1</id>
             <nombre>Piragüismo</nombre>
-            <telefono>45.20</telefono>
+            <precio>45.20</precio>
         </actividad>
         <actividad>
             <id>2</id>
             <nombre>Alpinismo</nombre>
-            <telefono>55.50</telefono>
+            <precio>55.50</precio>
         </actividad>
         <actividad>
             <id>3</id>
             <nombre>Tenis</nombre>
-            <telefono>7.50</telefono>
+            <precio>7.50</precio>
         </actividad>
         <actividad>
             <id>4</id>
             <nombre>Futbol</nombre>
-            <telefono>4.20</telefono>
+            <precio>4.20</precio>
         </actividad>
         <actividad>
             <id>5</id>
             <nombre>Buceo</nombre>
-            <telefono>12.50</telefono>
+            <precio>12.50</precio>
         </actividad>
         <actividad>
             <id>6</id>
             <nombre>Buceo con bombona</nombre>
-            <telefono>45.20</telefono>
+            <precio>45.20</precio>
         </actividad>
         <actividad>
             <id>7</id>
             <nombre>Tiro con arco</nombre>
-            <telefono>19.95</telefono>
+            <precio>19.95</precio>
         </actividad>
         <actividad>
             <id>8</id>
             <nombre>Baloncesto</nombre>
-            <telefono>8.50</telefono>
+            <precio>8.50</precio>
         </actividad>
         <actividad>
             <id>9</id>
             <nombre>Exploracion de cuevas</nombre>
-            <telefono>50</telefono>
+            <precio>50</precio>
         </actividad>
         <actividad>
             <id>10</id>
             <nombre>Juegos infantiles</nombre>
-            <telefono>2.50</telefono>
+            <precio>2.50</precio>
         </actividad>
         <actividad>
             <id>11</id>
             <nombre>Bingo</nombre>
-            <telefono>0</telefono>
+            <precio>0</precio>
         </actividad>
         <actividad>
             <id>12</id>
             <nombre>Rafting</nombre>
-            <telefono>65.50</telefono>
+            <precio>65.50</precio>
         </actividad>
     </actividades>
     <proveedores>
