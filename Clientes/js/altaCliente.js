@@ -10,7 +10,7 @@ function aceptarAltaCliente(){
     let iTelefono = parseInt(frmAltaCliente.txtTelefonoClienteAlta.value.trim());
     let sDireccion = frmAltaCliente.txtDireccionAlta.value.trim();
     let sEmail = frmAltaCliente.txtEmailAlta.value.trim();
-    let iNumTarjeta = parseInt(frmAltaCliente.txtNTarjetaAlta.value.trim());
+    let iNumTarjeta = frmAltaCliente.txtNTarjetaAlta.value.trim();
 
     if(!/^\d{8}[a-zA-Z]$/.test(sDni)){
         sMensaje+="El campo DNI esta mal\n";
@@ -51,13 +51,13 @@ function aceptarAltaCliente(){
     else{
         frmAltaCliente.txtEmailAlta.classList.remove("error");  
     }
-    if(!/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$/.test(iNumTarjeta)){
+  /*  if(!/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$/.test(iNumTarjeta)){
         sMensaje+="El campo del numero de la tarjeta esta mal(recuerde que son 16 numeros y que empieza por 4)\n";
         frmAltaCliente.txtNTarjetaAlta.classList.add("error");
     }
     else{
         frmAltaCliente.txtNTarjetaAlta.classList.remove("error");  
-    }
+    }*/
 
     if(sMensaje==""){
     var oCliente = {
@@ -71,7 +71,7 @@ function aceptarAltaCliente(){
     console.log(oCliente);
 
     var sParametros = "datos=" + JSON.stringify(oCliente);
-
+    console.log(sParametros);
     $.post("Clientes/altacliente.php", sParametros, respuestaAltaCliente, 'json');
     }
     else{

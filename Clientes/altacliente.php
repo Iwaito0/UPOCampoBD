@@ -15,16 +15,36 @@ $datos=json_decode($_POST["datos"]);
 echo "<pre>";
 print_r($datos);
 echo "</pre>";
+$sql="";
+foreach($datos as $indice=>$valor){
+    if($indice=="DNI"){
+    $sql .= "INSERT INTO cliente  VALUES ('$valor',";    
+    }
+    if($indice=="Nombre"){
+        $sql .="'$valor'".',';    
 
-echo "$datos.DNI";
+    }
+    if($indice=="Telefono"){
+        $sql .=$valor.',';      
+    }
+    if($indice=="Direccion"){
+        $sql .="'$valor'".',';    
+      
+    }
+    if($indice=="Email"){
+        $sql .="'$valor'".',';    
+     
+    }
+    if($indice=="numTarjeta"){
+        $sql .="'$valor'".')';    
+    }
+}
+echo $sql;
 
-// Consulta SQL para obtener los datos de los centros.
-//$sql = "INSERT INTO cliente  VALUES ('$datos.DNI','$datos.Nombre','$datos.Telefono','$datos.Direccion','$datos.Email','$datos.numTarjeta')";
-//echo $sql;
-//$resultados = mysqli_query($conexion,$sql) or die(mysqli_error($conexion));
+$resultados = mysqli_query($conexion,$sql) or die(mysqli_error($conexion));
 
 
-if ($resultado){
+if ($resultados){
     $respuesta["error"] = 0;
     $respuesta["mensaje"] = "Alta realizada"; 
 } else {
