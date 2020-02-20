@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-02-2020 a las 18:36:46
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.1
+-- Tiempo de generación: 20-02-2020 a las 18:42:55
+-- Versión del servidor: 10.1.35-MariaDB
+-- Versión de PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -64,7 +64,7 @@ CREATE TABLE `cliente` (
   `telefono` int(12) NOT NULL,
   `direccion` varchar(80) NOT NULL,
   `email` varchar(40) NOT NULL,
-  `numero_tarjeta` int(20) NOT NULL
+  `numero_tarjeta` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -72,16 +72,16 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`dni`, `nombre`, `telefono`, `direccion`, `email`, `numero_tarjeta`) VALUES
-('25518526A', 'Sofia', 2147483647, 'Plaza roma s/n 13 2C', 'sofialadivina@gmail.com', 2147483647),
-('25584568J', 'Sara', 2147483647, 'Plaza de parma 19 4A', 'sara089@gmail.com', 2147483647),
-('28569535T', 'Paula', 2147483647, 'Avenida alegria n3', 'paula1999@hotmail.es', 2147483647),
-('30452198R', 'Pedro', 2147483647, 'Calle paraiso n5', 'pedroelcrak@gmail.com', 2147483647),
-('44855685D', 'Rocio', 2147483647, 'Av europa 5 3D', 'rociobestfriends@gmail.com', 2147483647),
-('51483972H', 'Raul', 2147483647, 'Av montequinto n5', 'raulinformatico@gmail.com', 2147483647),
-('54664665A', 'Manuel', 2147483647, 'Av portimao n 12', 'manoloeldelbombo@hotmail.es', 2147483647),
-('68546545G', 'Amparo', 2147483647, 'Calle la esperanza n 9', 'amparo1993@gmail.com', 2147483647),
-('85216328G', 'Javier', 2147483647, 'Plaza la nueva n5', 'xavierfotografo@gmail.com', 2147483647),
-('98866866S', 'Lucia', 2147483647, 'Plaza de parma 21 3B', 'luciabogados@gmail.com', 2147483647);
+('25518526A', 'Sofia', 2147483647, 'Plaza roma s/n 13 2C', 'sofialadivina@gmail.com', '2147483647'),
+('25584568J', 'Sara', 2147483647, 'Plaza de parma 19 4A', 'sara089@gmail.com', '2147483647'),
+('28569535T', 'Paula', 2147483647, 'Avenida alegria n3', 'paula1999@hotmail.es', '2147483647'),
+('30452198R', 'Pedro', 2147483647, 'Calle paraiso n5', 'pedroelcrak@gmail.com', '2147483647'),
+('44855685D', 'Rocio', 2147483647, 'Av europa 5 3D', 'rociobestfriends@gmail.com', '2147483647'),
+('51483972H', 'Raul', 2147483647, 'Av montequinto n5', 'raulinformatico@gmail.com', '2147483647'),
+('54664665A', 'Manuel', 2147483647, 'Av portimao n 12', 'manoloeldelbombo@hotmail.es', '2147483647'),
+('68546545G', 'Amparo', 2147483647, 'Calle la esperanza n 9', 'amparo1993@gmail.com', '2147483647'),
+('85216328G', 'Javier', 2147483647, 'Plaza la nueva n5', 'xavierfotografo@gmail.com', '2147483647'),
+('98866866S', 'Lucia', 2147483647, 'Plaza de parma 21 3B', 'luciabogados@gmail.com', '2147483647');
 
 -- --------------------------------------------------------
 
