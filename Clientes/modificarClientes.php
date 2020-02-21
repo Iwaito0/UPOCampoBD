@@ -9,46 +9,48 @@ $password  = "";
 // Creamos la conexión al servidor.
 $conexion = mysqli_connect($servidor, $usuario, $password,$basedatos) or die(enviarResultados(0,[],$conexion));
 mysqli_set_charset($conexion,"utf8");
+$datos=json_decode($_POST["datos"]);
+
 echo "<pre>";
-print_r($_POST["datos"]);
+print_r($datos);
 echo "<pre>";
-
-
-
-
-/*
-// Consulta SQL para obtener los datos de los centros.
-$sql = "SELECT * FROM cliente WHERE dni='".$_GET["txtNif"]."'";
-$resultados = mysqli_query($conexion,$sql) or die(mysqli_error($conexion));
-
-if ($resultados){ // Si hay resultados
-
-    $datos = [];
-
-    while ($fila = mysqli_fetch_array($resultados)) {
-       // Almacenamos en un array cada una de las filas que vamos leyendo del recordset.
-        $datos[] = $fila;
+$sql="";
+$dni="";
+foreach($datos as $indice=>$valor){
+    if($indice=="DNI"){
+        $dni=$valor;
+    }
+    if($indice=="Nombre"){
+        $sql .= "UPDATE cliente  SET nombre='$valor',";  
+    }
+    if($indice=="Telefono"){
+        $sql .=" telefono=$valor,";      
+    }
+    if($indice=="Direccion"){
+        $sql .="direccion='$valor',";    
+      
+    }
+    if($indice=="Email"){
+        $sql .="email='$valor',";     
+     
+    }
+    if($indice=="numTarjeta"){
+        $sql .="numero_tarjeta='$valor'";      
     }
 }
+$sql.="WHERE dni='".$dni."'";
+//echo $sql;
+$resultados = mysqli_query($conexion,$sql);
+
+if ($resultados){
+    $respuesta["error"] = 0;
+    $respuesta["mensaje"] = "Modificacion realizada"; 
+} else {
+    $respuesta["error"] = 1;
+    $respuesta["mensaje"] = "Error en el proceso de modificacion: ".mysqli_error($conexion);
+}
+
+echo json_encode($respuesta);
 
 mysqli_close($conexion);
-
-enviarResultados($resultados,$datos,$conexion);
-
-function enviarResultados($resultados,$datos,$conexion){
-    // Generar la respuesta
-    header('Content-Type: application/json');
-
-    if ($resultados ){
-        $respuesta["error"] = 0; // No hay error
-        $respuesta["mensaje"] = "Datos recuperados"; 
-        $respuesta["datos"] = $datos;
-    } else {
-        $respuesta["error"] = 1;
-        $respuesta["mensaje"] = "Error al obtener la información: ".mysqli_error($conexion);
-        $respuesta["datos"] = [];
-    }
-
-    echo json_encode($respuesta);
-}*/
 ?>

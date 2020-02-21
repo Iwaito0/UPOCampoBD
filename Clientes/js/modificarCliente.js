@@ -56,7 +56,7 @@ function rellenarCampos(oDatos, sStatus, oXHR){
         let iTelefono = parseInt(frmModificarCliente.txtTelefonoClienteModificar.value.trim());
         let sDireccion = frmModificarCliente.txtDireccionModificar.value.trim();
         let sEmail = frmModificarCliente.txtEmailModificar.value.trim();
-        let iNumTarjeta = parseInt(frmModificarCliente.txtNTarjetaModificar.value.trim());
+        let iNumTarjeta = frmModificarCliente.txtNTarjetaModificar.value.trim();
     
         if(!/^\d{8}[a-zA-Z]$/.test(sDni)){
             sMensaje+="El campo DNI esta mal\n";
@@ -126,7 +126,8 @@ function rellenarCampos(oDatos, sStatus, oXHR){
     
     }
 
-function respuestaModificarCliente(){
+function respuestaModificarCliente(oDatos){
+    console.log(oDatos);
     if (oDatos.error) {
         alert(oDatos.mensaje);
     } else {
