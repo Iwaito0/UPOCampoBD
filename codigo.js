@@ -1882,7 +1882,7 @@ function mostrarAltaActividad(){
 
         $("#formularios").load("Actividades/altaActividades.html",
             function() {
-                $.getScript("js/altaActividad.js");
+                $.getScript("Actividades/js/altaActividades.js");
                 $('#frmAltaActividades').show("normal");
             });
         }
