@@ -100,9 +100,6 @@ menuListarActRes.addEventListener("click", mostrarListadoActRes, false);
 
 /*------------SELECCIONAR ELEMENTOS MODIFICAR------------*/
 /*
-var seleccionarClienteModificar = document.getElementById("btnSeleccionarCliente");
-seleccionarClienteModificar.addEventListener("click", seleccionarCliente, false);
-
 var seleccionarReservaModificar = document.getElementById("btnSeleccionarReserva");
 seleccionarReservaModificar.addEventListener("click", seleccionarReserva, false);
 
@@ -166,10 +163,9 @@ var estadoDesActividadMod = document.getElementById("noActividadMod");
 estadoDesActividadMod.addEventListener("click", habDesActividadMod, false);
 
 /*--------------------------CANCELAR--------------------------*/
-/*
-var botonCancelarClienteMod = document.getElementById("btnCancelarModificarCliente");
-botonCancelarClienteMod.addEventListener("click", cancelarModificarCliente, false);
 
+
+/*
 var botonCancelarReservaMod = document.getElementById("btnCancelarModificarReserva");
 botonCancelarReservaMod.addEventListener("click", cancelarModificarReserva, false);
 
@@ -207,10 +203,8 @@ botonAceptarBajaActividad.addEventListener("click", aceptarBajaActividad, false)
 var botonAceptarBajaProveedor = document.getElementById("btnAceptarBajaProveedor");
 botonAceptarBajaProveedor.addEventListener("click", aceptarBajaProveedor, false);
 /*---------------ACEPTAR MODIFICAR--------------------*/
-/*
-var botonModificarCliente = document.getElementById("btnAceptarModificarCliente");
-botonModificarCliente.addEventListener("click", aceptarModificarCliente, false);
 
+/*
 var botonModificarReserva = document.getElementById("btnAceptarModificarReserva");
 botonModificarReserva.addEventListener("click", aceptarModificarReserva, false);
 
@@ -750,48 +744,8 @@ function datosReservaCorrectos()
 
 
 /*-------------SELECCIONAR-------------*/
+
 /*
-function seleccionarCliente(){
-    let sNif = frmModificarCliente.txtNifModificar.value.trim();
-
-    let botonSeleccionar = document.getElementById("btnSeleccionarCliente");
-    let btnModificarCliente = document.getElementById("btnAceptarModificarCliente");
-    let btnCacelarModCliente = document.getElementById("btnCancelarModificarCliente");
-    let inputNif = document.getElementById("txtNifModificar");
-    let inputNombre = document.getElementById("txtNombreClienteModificar");
-    let inputTelefono = document.getElementById("txtTelefonoClienteModificar");
-    let inputDireccion = document.getElementById("txtDireccionModificar");
-    let inputEmail = document.getElementById("txtEmailModificar");
-    let inputNumTarjeta = document.getElementById("txtNTarjetaModificar");
-
-    let clienteSeleccionado = oUPOCampo.buscarCliente(sNif);
-
-    if (clienteSeleccionado != "") {
-        inputNif.disabled = true;
-        botonSeleccionar.disabled = true;
-
-        inputNombre.disabled = false;
-        inputTelefono.disabled = false;
-        inputDireccion.disabled = false;
-        inputEmail.disabled = false;
-        inputNumTarjeta.disabled = false;
-        btnModificarCliente.disabled = false;
-        btnCacelarModCliente.disabled = false;
-
-        inputNombre.value = clienteSeleccionado[0].nombre;
-        inputTelefono.value = clienteSeleccionado[0].telefono;
-        inputDireccion.value = clienteSeleccionado[0].direccion;
-        inputEmail.value = clienteSeleccionado[0].email;
-        inputNumTarjeta.value = clienteSeleccionado[0].numeroTarjeta;
-    }
-
-    else {
-        alert("No se encuentra ningun cliente con ese NIF");
-
-        cancelarModificarCliente();
-    }
-
-}
 
 function habDesParkingMod() {
     
@@ -990,31 +944,6 @@ function seleccionarProveedor(){
 
 /*--------------CANCELAR--------------*/
 /*
-function cancelarModificarCliente(){
-    let botonSeleccionar = document.getElementById("btnSeleccionarCliente");
-    let btnModificarCliente = document.getElementById("btnAceptarModificarCliente");
-    let btnCacelarModCliente = document.getElementById("btnCancelarModificarCliente");
-    let inputNif = document.getElementById("txtNifModificar");
-    let inputNombre = document.getElementById("txtNombreClienteModificar");
-    let inputTelefono = document.getElementById("txtTelefonoClienteModificar");
-    let inputDireccion = document.getElementById("txtDireccionModificar");
-    let inputEmail = document.getElementById("txtEmailModificar");
-    let inputNumTarjeta = document.getElementById("txtNTarjetaModificar");
-
-    inputNif.disabled = false;
-    botonSeleccionar.disabled = false;
-
-    inputNombre.disabled = true;
-    inputTelefono.disabled = true;
-    inputDireccion.disabled = true;
-    inputEmail.disabled = true;
-    inputNumTarjeta.disabled = true;
-    btnModificarCliente.disabled = true;
-    btnCacelarModCliente.disabled = true;
-
-    frmModificarCliente.reset();
-}
-
 function cancelarModificarReserva(){
     let botonSeleccionar = document.getElementById("btnSeleccionarReserva");
     let btnModificarReserva = document.getElementById("btnAceptarModificarReserva");
@@ -1082,83 +1011,8 @@ function  cancelarModificarProveedor(){
 
 
 /*-------------MODIFICAR-------------*/
+
 /*
-function aceptarModificarCliente(){
-    let sMensaje="";
-    // Recoger valores del formulario
-    let sDni = frmModificarCliente.txtNifModificar.value.trim();
-    let sNombre = frmModificarCliente.txtNombreClienteModificar.value.trim();
-    let iTelefono = parseInt(frmModificarCliente.txtTelefonoClienteModificar.value.trim());
-    let sDireccion = frmModificarCliente.txtDireccionModificar.value.trim();
-    let sEmail = frmModificarCliente.txtEmailModificar.value.trim();
-    let iNumTarjeta = parseInt(frmModificarCliente.txtNTarjetaModificar.value.trim());
-
-    if(!/^\d{8}[a-zA-Z]$/.test(sDni)){
-        sMensaje+="El campo DNI esta mal\n";
-        frmModificarCliente.txtNifModificar.classList.add("error");
-    }
-    else{
-        frmModificarCliente.txtNifModificar.classList.remove("error");  
-    }
-
-    if(!/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/.test(sNombre)){
-        sMensaje+="El campo nombre esta mal\n";
-        frmModificarCliente.txtNombreClienteModificar.classList.add("error");
-    }
-    else{
-        frmModificarCliente.txtNombreClienteModificar.classList.remove("error");  
-    }
-
-
-    if(!/^(\+34|0034|34)?[6|7|9][0-9]{8}$/g.test(iTelefono)){
-        sMensaje+="El campo telefono esta mal (Recuerde poner el prefijo )\n";
-        frmModificarCliente.txtTelefonoClienteModificar.classList.add("error");
-    }
-    else{
-        frmModificarCliente.txtTelefonoClienteModificar.classList.remove("error");  
-    }
-    
-    if(!/[a-zA-Z1-9À-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-Z1-9À-ÖØ-öø-ÿ]+\.?)*/
-    /*.test(sDireccion)){
-        sMensaje+="El campo direccion esta mal\n";
-        frmModificarCliente.txtDireccionModificar.classList.add("error");
-    }
-    else{
-        frmModificarCliente.txtDireccionModificar.classList.remove("error");  
-    }
-
-    if(!/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/g.test(sEmail)){
-        sMensaje+="El campo email esta mal\n";
-        frmModificarCliente.txtEmailModificar.classList.add("error");
-    }
-    else{
-        frmModificarCliente.txtEmailModificar.classList.remove("error");  
-    }
-    if(!/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$/.test(iNumTarjeta)){
-        sMensaje+="El campo del numero de la tarjeta esta mal(recuerde que son 16 numeros y que empieza por 4)\n";
-        frmModificarCliente.txtNTarjetaModificar.classList.add("error");
-    }
-    else{
-        frmModificarCliente.txtNTarjetaModificar.classList.remove("error");  
-    }
-
-    if(sMensaje==""){
-    // Creamos el objeto cliente
-    let oCliente = new Cliente(sDni, sNombre, iTelefono, sDireccion, sEmail, iNumTarjeta);
-
-    // Alta de cliente en UPOCAMPO
-    let sMensaje = oUPOCampo.modificarCliente(oCliente);
-    alert(sMensaje);    
-    cancelarModificarCliente();
-    }
-    else{
-        alert(sMensaje);
-    }
-
-
-
-}
-
 function aceptarModificarReserva(){
     // Recoger valores del formulario
     let sMensaje = "";
