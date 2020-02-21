@@ -116,7 +116,7 @@ function rellenarCampos(oDatos, sStatus, oXHR){
                 numTarjeta: iNumTarjeta
             };
             var sParametros = "datos=" + JSON.stringify(oCliente);
-            $.post("Clientes/modificarClientes.php", sParametros, respuestaAltaCliente, 'json');
+            $.post("Clientes/modificarClientes.php", sParametros, respuestaModificarCliente, 'json');
         }
         else{
             alert(sMensaje);

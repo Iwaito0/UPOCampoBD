@@ -10,7 +10,7 @@ $password  = "";
 $conexion = mysqli_connect($servidor, $usuario, $password,$basedatos) or die(enviarResultados(0,[],$conexion));
 mysqli_set_charset($conexion,"utf8");
 echo "<pre>";
-print_r($_POST);
+print_r($_POST["datos"]);
 echo "<pre>";
 
 
