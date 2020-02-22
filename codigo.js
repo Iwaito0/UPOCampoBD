@@ -78,14 +78,6 @@ menuListarHabDispFecha.addEventListener("click", mostrarListadoHabDisp, false);
 var menuListarParkDispFecha = document.getElementById("listadoParkDispFecha");
 menuListarParkDispFecha.addEventListener("click", mostrarListadoParkDisp, false);
 
-
-$("#bajaCliente").click(mostrarBajaCliente);
-
-$("#bajaReserva").click(mostrarBajaReserva);
-
-$("#bajaActividad").click(mostrarBajaActividad);
-
-$("#bajaProveedor").click(mostrarBajaProveedor);
 /*
 /*-------------POR RESERVA-------------*/
 /*
@@ -1988,7 +1980,7 @@ function mostrarBajaProveedor(){
 
         $("#formularios").load("Proveedor/bajaProveedor.html",
             function() {
-                $.getScript("js/bajaProveedor.js");
+                $.getScript("Proveedor/js/bajaProveedor.js");
                 $('#frmBajaProveedores').show("normal");
             });
         }
