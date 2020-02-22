@@ -7,7 +7,8 @@ function aceptarAltaActividades()
 
     // Recoger valores del formulario
     let iID = frmAltaActividades.txtID.value.trim();
-    let sNombre = frmAltaActividades.txtNombreClienteAlta.value.trim();
+    let sNombre = frmAltaActividades.txtNombreActividad.value.trim();
+    let fPrecio = parseFloat(frmAltaActividades.txtPrecioAltaActividades.value.trim());
 
     if(!/^\d+$/.test(iID)){
         sMensaje+="El campo ID esta mal. El campo ID debe ser un numero\n";
@@ -18,10 +19,10 @@ function aceptarAltaActividades()
     }
     if(!/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/.test(sNombre)){
         sMensaje+="El campo nombre esta mal\n";
-        frmAltaActividades.txtNombreClienteAlta.classList.add("error");
+        frmAltaActividades.txtNombreActividad.classList.add("error");
     }
     else{
-        frmAltaActividades.txtNombreClienteAlta.classList.remove("error");  
+        frmAltaActividades.txtNombreActividad.classList.remove("error");  
     }
     if(!/^[0-9]+([.][0-9]+)?$/.test(fPrecio)){
         sMensaje+="El campo precio esta mal (ten cuidado que el separador de decimales es el punto)\n";
