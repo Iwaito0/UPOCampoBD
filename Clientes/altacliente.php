@@ -12,36 +12,12 @@ mysqli_query($conexion,"utf8");
 
 $datos=json_decode($_POST["datos"]);
 
-echo "<pre>";
+/*echo "<pre>";
 print_r($datos);
-echo "</pre>";
-$sql="";
-foreach($datos as $indice=>$valor){
-    if($indice=="DNI"){
-    $sql .= "INSERT INTO cliente  VALUES ('$valor',";    
-    }
-    if($indice=="Nombre"){
-        $sql .="'$valor'".',';    
+echo "</pre>";*/
 
-    }
-    if($indice=="Telefono"){
-        $sql .=$valor.',';      
-    }
-    if($indice=="Direccion"){
-        $sql .="'$valor'".',';    
-      
-    }
-    if($indice=="Email"){
-        $sql .="'$valor'".',';    
-     
-    }
-    if($indice=="numTarjeta"){
-        $sql .="'$valor'".')';    
-    }
-}
-echo $sql;
-
-$resultados = mysqli_query($conexion,$sql) or die(mysqli_error($conexion));
+$sql = "INSERT INTO cliente (dni, nombre, telefono, direccion, email, numero_tarjeta) VALUES ('$datos->DNI','$datos->Nombre','$datos->Telefono','$datos->Direccion','$datos->Email','$datos->numTarjeta');";
+$resultados = mysqli_query($conexion,$sql);
 
 
 if ($resultados){
