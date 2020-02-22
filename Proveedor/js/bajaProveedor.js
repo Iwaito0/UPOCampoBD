@@ -7,10 +7,10 @@ function aceptarBajaProveedor(){
     if(sCif!=""){
     var sParametros = "datos=" + JSON.stringify(sCif);
 
-    $.post("Provvedor/bajaProveedor.php", sParametros, respuestaBajaProveedor, 'json');  
+    $.post("Proveedor/bajaProveedor.php", sParametros, respuestaBajaProveedor, 'json');  
     }
 }
-function respuestaBajaProveedor(){
+function respuestaBajaProveedor(oDatos){
     if (oDatos.error) {
         alert(oDatos.mensaje);
     } else {
