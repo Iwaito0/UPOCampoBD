@@ -75,7 +75,7 @@ function aceptarAltaCliente(){
         alert(sMensaje);
     }
 }
-function respuestaAltaCliente(){
+function respuestaAltaCliente(oDatos, sStatus, oXHR){
     if (oDatos.error) {
         alert(oDatos.mensaje);
     } else {
