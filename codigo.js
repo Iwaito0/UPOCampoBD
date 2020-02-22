@@ -1962,7 +1962,7 @@ function mostrarBajaActividad(){
 
         $("#formularios").load("Actividades/bajaActividad.html",
             function() {
-                $.getScript("js/bajaActividad.js");
+                $.getScript("Actividades/js/bajaActividad.js");
                 $('#frmBajaActividad').show("normal");
             });
         }
