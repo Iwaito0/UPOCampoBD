@@ -64,7 +64,6 @@ function procesoRespuestaAltaActividad()
     // Proceso la respuesta cuando llega
     if (oAjax.readyState == 4 && oAjax.status == 200)
     {
-        console.log(oAjax.responseText);
         var oMensaje = JSON.parse(oAjax.responseText);
         if (oMensaje.error)
         {
