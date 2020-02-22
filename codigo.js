@@ -1988,7 +1988,7 @@ function mostrarBajaProveedor(){
 
         $("#formularios").load("Proveedor/bajaProveedor.html",
             function() {
-                $.getScript("js/bajaProveedor.js");
+                $.getScript("Proveedor/js/bajaProveedor.js");
                 $('#frmBajaProveedores').show("normal");
             });
         }
