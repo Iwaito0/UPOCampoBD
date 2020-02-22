@@ -1863,7 +1863,7 @@ function mostrarAltaProveedor() {
 
         $("#formularios").load("Proveedor/altaProveedor.html",
             function() {
-                $.getScript("js/altaProveedor.js");
+                $.getScript("Proveedor/js/altaProveedor.js");
                 $('#frmAltaProveedor').show("normal");
             });
         }
