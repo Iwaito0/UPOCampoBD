@@ -19,11 +19,9 @@ function respuestaBajaActividad(oDatos){
     oDatos = JSON.parse(oDatos);
     if (oDatos.error) {
         alert(oDatos.mensaje);
-        console.log("sale mal");
     } else {
         alert(oDatos.mensaje);
         frmBajaActividad.reset();
         $("#frmBajaActividad").hide("normal");
-        console.log("sale bien");
     }  
 }
