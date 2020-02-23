@@ -10,7 +10,7 @@
 	mysqli_set_charset($conexion,"utf8");
 
 	// Consulta SQL para obtener los datos de los centros.
-	$sql = "SELECT * FROM actividad WHERE id='".$_GET["txtID"]."'";
+	$sql = "SELECT * FROM actividades WHERE id='".$_GET["txtID"]."'";
 	$resultados = mysqli_query($conexion,$sql) or die(mysqli_error($conexion));
 
 	if ($resultados){ // Si hay resultados
