@@ -107,10 +107,10 @@ menuListadosActividades.addEventListener("click", listadosActividades, false);*/
 var menuListadosProveedores = document.getElementById("listadoProveedores");
 menuListadosProveedores.addEventListener("click", listadosProveedores, false);
 
-/*var menuListadosClientes = document.getElementById("listadoClientes");
+var menuListadosClientes = document.getElementById("listadoClientes");
 menuListadosClientes.addEventListener("click", listadosClientes, false);
 
-var menuListadosReservas = document.getElementById("listadoReservas");
+/*var menuListadosReservas = document.getElementById("listadoReservas");
 menuListadosReservas.addEventListener("click", listadosReservas, false);
 
 var menuListadosHabitaciones = document.getElementById("listadoHabitaciones");
@@ -2154,6 +2154,11 @@ function mostrarListadoParkDisp() {
 function listadosProveedores() {
 	$("#formularios form:not('#frmListadoParkDispFecha')").hide("normal");
 	$.getScript("Proveedor/js/listadoProveedores.js");
+}
+
+function listadosClientes() {
+	$("#formularios form:not('#frmListadoParkDispFecha')").hide("normal");
+	$.getScript("Clientes/js/listadoClientes.js");
 }
 /*
 function esconderTodosLosFormularios(){
