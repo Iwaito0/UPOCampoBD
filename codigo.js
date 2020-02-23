@@ -1894,12 +1894,12 @@ function mostrarAltaReserva() {
 
         $("#formularios").load("Reserva/altaReserva.html",
             function() {
-                $.getScript("js/altaReserva.js");
+                $.getScript("Reserva/js/altaReserva.js");
                 $('#frmAltaReserva').show("normal");
-                mostrarHabitaciones(selectParkLista);
+                /*mostrarHabitaciones(selectParkLista);
                 habDesParking();
                 habDesActividad();
-                mostrarRegimenes(selectRegAlta);
+                mostrarRegimenes(selectRegAlta);*/
             });
         }
         else
