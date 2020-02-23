@@ -1894,7 +1894,7 @@ function mostrarAltaReserva() {
 
         $("#formularios").load("Reserva/altaReserva.html",
             function() {
-                $.getScript("Reserva/js/altaReservas.js");
+                $.getScript("Reserva/js/altaRerseva.js");
                 $('#frmAltaReserva').show("normal");
             });
         }
