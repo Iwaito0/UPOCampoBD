@@ -1894,12 +1894,8 @@ function mostrarAltaReserva() {
 
         $("#formularios").load("Reserva/altaReserva.html",
             function() {
-                $.getScript("Reserva/js/altaReserva.js");
+                $.getScript("Reserva/js/altaReservas.js");
                 $('#frmAltaReserva').show("normal");
-                /*mostrarHabitaciones(selectParkLista);
-                habDesParking();
-                habDesActividad();
-                mostrarRegimenes(selectRegAlta);*/
             });
         }
         else
