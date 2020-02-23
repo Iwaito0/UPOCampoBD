@@ -7,24 +7,18 @@ var inputIDActividad = document.getElementById("txtIDModificarActividad");
 var inputNombreActividad = document.getElementById("txtNombreModificarActividad");
 var inputPrecioActividad = document.getElementById("txtPrecioModificarActividad");
 
-console.log("He entrado en el menú");
-
 $("#btnSeleccionarActividades").click(seleccionarActividad);
 $("#btnAceptarModificarActividades").click(modificarActividad);
 $("#btnCancelarModificarActividades").click(cancelarModificarActividad);
 
 function seleccionarActividad(){
-    console.log("He entrado en Seleccionar");
     let iID = frmModificaActividades.txtID.value.trim();
     $.get("Actividades/getActividadID.php", $("#frmModificaActividades").serialize(),rellenarCampos,'json');
 }
 
 function rellenarCampos(oDatos){
 
-    console.log("He entrado en el Rellenar");
-
     if (oDatos["datos"] != "") {
-        console.log("Se mandan datos");
         inputIDActividad.disabled = true;
         btnSeleccionarActividad.disabled = true;
 
@@ -35,7 +29,6 @@ function rellenarCampos(oDatos){
 
         inputNombreActividad.value = oDatos["datos"][0]["nombre"];
         inputPrecioActividad.value = oDatos["datos"][0]["precio"];
-        console.log("Todo en orden");
     }
 
     else {
