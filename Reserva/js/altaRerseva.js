@@ -2,20 +2,32 @@
 // Hacer todo el funcionamiento de Alta Reserva aquí, cogiendo las variables que
 // están en codigo.js y adaptar el código a esto. Falta coger también el funcionamiento
 // en sí del código, cargar los combobox y hacer la reserva correctamente
-
-
 $.get("Reserva/getHabitaciones.php",mostrarHabitaciones,'json');
 
+$("#btnComprobarDatos").click(comprobarDatos);
+$("#frmAltaReserva input").blur(actualizarFormulario);
 
+function comprobarDatos(){
+	
+}
+
+function actualizarFormulario() {
+	$.get("Reserva/getHabitaciones.php",mostrarHabitaciones,'json');
+}
 
 function mostrarHabitaciones(oHabitaciones)  {
-	let aLista = [];
-	console.log(oHabitaciones);
-	/*let aReserva = oUPOCampo.getArrayReservas();
-
+	let aLista = document.getElementById("selectListaHab");
+	aLista.length = 0;
+	let aHabitaciones = oHabitaciones["datos"];
+	let aReserva = oHabitaciones["reservas"];
+	let aDisponibles = [];
+	let dFechaIni = frmAltaReserva.txtEntrada.value.trim();
+	let dFechaFin = frmAltaReserva.txtSalida.value.trim();
+	let iNumMaxPersonas = parseInt(frmAltaReserva.txtNum.value.trim());
+	console.log(aHabitaciones);
 	for (let i = 0; i < aHabitaciones.length; i++) {
 	    for (let j = 0; j < aReserva.length; j++) {
-	        if (aHabitaciones[i].id == aReserva[j].numHabitaciones) {
+	        if (aHabitaciones[i].id == aReserva[j].numero_habitacion) {
 	         	if ((aReserva[j].checkin > dFechaIni && aReserva[j].checkin <= dFechaFin && aReserva[j].checkout >= dFechaFin) || 
 	         		(aReserva[j].checkin <= dFechaIni && aReserva[j].checkout >= dFechaFin) || 
 	         		(aReserva[j].checkin <= dFechaIni && aReserva[j].checkout >= dFechaIni && aReserva[j].checkout < dFechaFin) || 
@@ -25,7 +37,7 @@ function mostrarHabitaciones(oHabitaciones)  {
 	         	}
 	        }
 	    }
-	    if (aHabitaciones[i].ocupacionMaxima < iNumMaxPersonas) {
+	    if (aHabitaciones[i].ocupacion_max < iNumMaxPersonas) {
 	 		aHabitaciones.splice(i, 1);
 	     	i--;
 	 	}
@@ -37,7 +49,7 @@ function mostrarHabitaciones(oHabitaciones)  {
 	    let texto = document.createTextNode(aHabitaciones[i].id);
 	    opc.appendChild(texto);
 	    aLista.appendChild(opc);
-	}*/
+	}
     
 }
 
