@@ -110,13 +110,13 @@ menuListadosProveedores.addEventListener("click", listadosProveedores, false);
 var menuListadosClientes = document.getElementById("listadoClientes");
 menuListadosClientes.addEventListener("click", listadosClientes, false);
 
-/*var menuListadosReservas = document.getElementById("listadoReservas");
+var menuListadosReservas = document.getElementById("listadoReservas");
 menuListadosReservas.addEventListener("click", listadosReservas, false);
 
 var menuListadosHabitaciones = document.getElementById("listadoHabitaciones");
 menuListadosHabitaciones.addEventListener("click", listadosHabitaciones, false);
 
-var menuListadosParking = document.getElementById("listadoParking");
+/*var menuListadosParking = document.getElementById("listadoParking");
 menuListadosParking.addEventListener("click", listadosParking, false);*/
 
 /*-----------------------------FOCO-----------------------------*/
@@ -2121,7 +2121,7 @@ function mostrarListadoHabDisp() {
 
         $("#formularios").load("Habitaciones/listadoHabitacionesFecha.html",
             function() {
-                $.getScript("js/listadoHabitaciones.js");
+                $.getScript("Habitaciones/js/listadoHabitaciones.js");
                 $('#frmListadoHabDispFecha').show("normal");
             });
         }
@@ -2159,6 +2159,16 @@ function listadosProveedores() {
 function listadosClientes() {
 	$("#formularios form:not('#frmListadoParkDispFecha')").hide("normal");
 	$.getScript("Clientes/js/listadoClientes.js");
+}
+
+function listadosReservas(){
+	$("#formularios form:not('#frmListadoParkDispFecha')").hide("normal");
+	$.getScript("Reserva/js/listadoReservas.js");
+}
+
+function listadosHabitaciones(){
+	$("#formularios form:not('#frmListadoParkDispFecha')").hide("normal");
+	$.getScript("Habitaciones/js/listadoHabitaciones.js");
 }
 /*
 function esconderTodosLosFormularios(){
