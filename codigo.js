@@ -2098,7 +2098,7 @@ function mostrarListadoRes(){
 
         $("#formularios").load("Reserva/listadoReservaFecha.html",
             function() {
-                $.getScript("js/listadoReservaFecha.js");
+                $.getScript("Reserva/js/listadoReservaFecha.js");
                 $('#frmListadoResFecha').show("normal");
             });
         }
