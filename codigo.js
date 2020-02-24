@@ -2136,7 +2136,7 @@ function mostrarListadoParkDisp() {
 
         $("#formularios").load("Parking/listadoParkingFecha.html",
             function() {
-                $.getScript("js/frmListadoParkDispFecha.js");
+                $.getScript("Parking/js/frmListadoParkDispFecha.js");
                 $('#frmListadoParkDispFecha').show("normal");
             });
         }
