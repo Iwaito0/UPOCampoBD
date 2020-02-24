@@ -2117,7 +2117,7 @@ function mostrarListadoHabDisp() {
 
         $("#formularios").load("Habitaciones/listadoHabitacionesFecha.html",
             function() {
-                $.getScript("Habitaciones/js/listadoHabitaciones.js");
+                $.getScript("Habitaciones/js/listadoHabitacionesPorFecha.js");
                 $('#frmListadoHabDispFecha').show("normal");
             });
         }
