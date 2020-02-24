@@ -66,24 +66,20 @@ $("#modificarProveedor").click(mostrarModificarProveedor);
 
 /*--------------POR FECHA--------------*/
 
-var menuListarCliRes = document.getElementById("listadoClientesPorFecha");
-menuListarCliRes.addEventListener("click", mostrarListadoCliRes, false);
+$("#listadoClientesPorFecha").click(mostrarListadoCliRes);
 
-var menuListarResFecha = document.getElementById("listadoReservasPorFecha");
-menuListarResFecha.addEventListener("click", mostrarListadoRes, false);
+$("#listadoReservasPorFecha").click(mostrarListadoRes);
 
-var menuListarHabDispFecha = document.getElementById("listadoHabDispFecha");
-menuListarHabDispFecha.addEventListener("click", mostrarListadoHabDisp, false);
+$("#listadoHabDispFecha").click(mostrarListadoHabDisp);
 
-var menuListarParkDispFecha = document.getElementById("listadoParkDispFecha");
-menuListarParkDispFecha.addEventListener("click", mostrarListadoParkDisp, false);
+$("#listadoParkDispFecha").click(mostrarListadoParkDisp);
 
 /*
 /*-------------POR RESERVA-------------*/
-/*
-var menuListarParkRes = document.getElementById("listadoParkingReserva");
-menuListarParkRes.addEventListener("click", mostrarListadoParkRes, false);
 
+$("#listadoParkingReserva").click(mostrarListadoParkRes);
+
+/*
 var menuListarRegRes = document.getElementById("listadoRegimenReserva");
 menuListarRegRes.addEventListener("click", mostrarListadoRegRes, false);
 
@@ -1703,10 +1699,14 @@ function aceptarListadoParkDispFecha() {
 }
 
 //---------------LISTADO POR RESERVAS---------------
-
+*/
 function mostrarListadoParkRes(){
+    console.log("aaa");
+    //$.get("Reserva/parkingReservado.php",mostrarParkingReservados,'json');
+}
+function mostrarParkingReservados(oDatos){
+    console.log(oDatos["datos"]);
     let pestana=window.open()
-    let aPark=oUPOCampo.listadoReservaParking();
     pestana.document.write("<html><head><link rel='icon' href='./img/favicon.png' type='image/png'><title>Listado Filtros - Reservas con Parking</title><link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'></head></html>"); 
     //Creacion de la tabla
     let oTabla=document.createElement("TABLE");
@@ -1731,25 +1731,26 @@ function mostrarListadoParkRes(){
     let oTBody = document.createElement("TBODY");
     oTabla.appendChild(oTBody);
     
-    for(let i=0; i<aPark.length; i++){
+    for(let i=0; i<oDatos["datos"].length; i++){
         let oFila = oTBody.insertRow(-1);
     
         let oCelda = oFila.insertCell(-1);
-        oCelda.textContent = aPark[i].id;
+        oCelda.textContent = oDatos["datos"][i]["numero_parking"];
     
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = aPark[i].resID;
+        oCelda.textContent = oDatos["datos"][i]["id"];
         
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = aPark[i].checkin;
+        oCelda.textContent = oDatos["datos"][i]["checkin"];
 
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = aPark[i].checkout;
+        oCelda.textContent = oDatos["datos"][i]["checkout"];
     }
 
     pestana.document.body.append(oTabla);
 }
 
+/*
 function mostrarListadoRegRes() {
     let pestana=window.open();
     let aRegimen = oUPOCampo.listadoReservaRegimenA();
