@@ -12,8 +12,8 @@
     mysqli_set_charset($conexion,"utf8");
 
 	// Consulta SQL para obtener los datos de los centros.
-	$sql = "SELECT * FROM `cliente` INNER JOIN reserva WHERE dni=nif_cliente and checkin BETWEEN date('$datos->fechaEntrada')AND date('$datos->fechaSalida') and checkout BETWEEN date('$datos->fechaEntrada')AND date('$datos->fechaSalida')";
-	$resultados = mysqli_query($conexion,$sql) or die(mysqli_error($conexion));
+    $sql="SELECT * FROM `habitacion` INNER JOIN reserva WHERE numero_habitacion=habitacion.id and checkin BETWEEN date('$datos->fechaEntrada')AND date('$datos->fechaSalida') and checkout BETWEEN date('$datos->fechaEntrada')AND date('$datos->fechaSalida')";
+    $resultados = mysqli_query($conexion,$sql) or die(mysqli_error($conexion));
 
 	if ($resultados){ // Si hay resultados
 

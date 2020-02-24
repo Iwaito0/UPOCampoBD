@@ -2098,7 +2098,7 @@ function mostrarListadoRes(){
 
         $("#formularios").load("Reserva/listadoReservaFecha.html",
             function() {
-                $.getScript("js/listadoReservaFecha.js");
+                $.getScript("Reserva/js/listadoReservaFecha.js");
                 $('#frmListadoResFecha').show("normal");
             });
         }
@@ -2117,7 +2117,7 @@ function mostrarListadoHabDisp() {
 
         $("#formularios").load("Habitaciones/listadoHabitacionesFecha.html",
             function() {
-                $.getScript("Habitaciones/js/listadoHabitaciones.js");
+                $.getScript("Habitaciones/js/listadoHabitacionesPorFecha.js");
                 $('#frmListadoHabDispFecha').show("normal");
             });
         }
@@ -2136,7 +2136,7 @@ function mostrarListadoParkDisp() {
 
         $("#formularios").load("Parking/listadoParkingFecha.html",
             function() {
-                $.getScript("js/frmListadoParkDispFecha.js");
+                $.getScript("Parking/js/frmListadoParkDispFecha.js");
                 $('#frmListadoParkDispFecha').show("normal");
             });
         }
