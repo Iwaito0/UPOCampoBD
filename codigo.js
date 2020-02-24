@@ -2079,7 +2079,7 @@ function mostrarListadoCliRes(){
 
         $("#formularios").load("Clientes/listadoClienteFecha.html",
             function() {
-                $.getScript("js/listadoClienteFecha.js");
+                $.getScript("Clientes/js/listadoClienteFecha.js");
                 $('#frmListadoCliResFecha').show("normal");
             });
         }
