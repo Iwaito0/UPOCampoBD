@@ -3,9 +3,13 @@
 // están en codigo.js y adaptar el código a esto. Falta coger también el funcionamiento
 // en sí del código, cargar los combobox y hacer la reserva correctamente
 $.get("Reserva/getHabitaciones.php",mostrarHabitaciones,'json');
+$.get("Reserva/getRegimen.php",mostrarRegimenes,'json');
 
 $("#btnComprobarDatos").click(comprobarDatos);
 $("#frmAltaReserva input").blur(actualizarFormulario);
+$('[name=estadoParking]').change(actualizarComboPrk);
+
+let selectParking = document.getElementById("selectListaParking");
 
 function comprobarDatos(){
 	
@@ -13,6 +17,18 @@ function comprobarDatos(){
 
 function actualizarFormulario() {
 	$.get("Reserva/getHabitaciones.php",mostrarHabitaciones,'json');
+}
+
+function actualizarComboPrk() {
+	console.log($('[name=estadoParking]:checked').val());
+	if ($('[name=estadoParking]:checked').val()=='si') {
+		//mostrarParkingDisponibles();
+		selectParking.style.display = "block";
+	}
+	else {
+		selectParking.length = 0;
+		selectParking.style.display = "none";
+	}
 }
 
 function mostrarHabitaciones(oHabitaciones)  {
@@ -24,7 +40,6 @@ function mostrarHabitaciones(oHabitaciones)  {
 	let dFechaIni = frmAltaReserva.txtEntrada.value.trim();
 	let dFechaFin = frmAltaReserva.txtSalida.value.trim();
 	let iNumMaxPersonas = parseInt(frmAltaReserva.txtNum.value.trim());
-	console.log(aHabitaciones);
 	for (let i = 0; i < aHabitaciones.length; i++) {
 	    for (let j = 0; j < aReserva.length; j++) {
 	        if (aHabitaciones[i].id == aReserva[j].numero_habitacion) {
@@ -33,7 +48,7 @@ function mostrarHabitaciones(oHabitaciones)  {
 	         		(aReserva[j].checkin <= dFechaIni && aReserva[j].checkout >= dFechaIni && aReserva[j].checkout < dFechaFin) || 
 	         		(aReserva[j].checkin > dFechaIni && aReserva[j].checkout < dFechaFin)) {
 	         		aHabitaciones.splice(i, 1);
-	             	i--;
+	             	//i--;
 	         	}
 	        }
 	    }
@@ -80,15 +95,16 @@ function mostrarHabitaciones(oHabitaciones)  {
 //     }
 // }
 
-// function mostrarRegimenes(aLista) {
-//     aLista.length = 0;
-//     let aRegimen = oUPOCampo.buscarRegimen();
+function mostrarRegimenes(oRegimen) {
+    let aLista = document.getElementById("selectListaReg");
+	aLista.length = 0;
+    let aRegimen = oRegimen["datos"];
 
-//     for (let i = 0; i < aRegimen.length; i++) {
-//         let opc = document.createElement("option");
-//         opc.setAttribute("value", aRegimen[i].id);
-//         let texto = document.createTextNode(aRegimen[i].id);
-//         opc.appendChild(texto);
-//         aLista.appendChild(opc);
-//     }
-// }
+    for (let i = 0; i < aRegimen.length; i++) {
+        let opc = document.createElement("option");
+        opc.setAttribute("value", aRegimen[i].id);
+        let texto = document.createTextNode(aRegimen[i].id);
+        opc.appendChild(texto);
+        aLista.appendChild(opc);
+    }
+}
