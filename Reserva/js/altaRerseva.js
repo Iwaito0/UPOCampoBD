@@ -4,12 +4,21 @@
 // en sí del código, cargar los combobox y hacer la reserva correctamente
 $.get("Reserva/getHabitaciones.php",mostrarHabitaciones,'json');
 $.get("Reserva/getRegimen.php",mostrarRegimenes,'json');
+$.get("Reserva/getParking.php",mostrarParkingDisponibles,'json');
+$.get("Reserva/getActividades.php",mostrarActividadesDisponibles,'json');
 
 $("#btnComprobarDatos").click(comprobarDatos);
-$("#frmAltaReserva input").blur(actualizarFormulario);
+$("#txtNumAlta,#txtEntradaAlta,#txtSalidaAlta").blur(actualizarFormulario);
 $('[name=estadoParking]').change(actualizarComboPrk);
+$('[name=estadoActividad]').change(actualizarComboAct);
 
 let selectParking = document.getElementById("selectListaParking");
+selectParking.length = 0;
+selectParking.style.display = "none";
+
+let selectActividad = document.getElementById("selectListaActividad");
+selectActividad.length = 0;
+selectActividad.style.display = "none";
 
 function comprobarDatos(){
 	
@@ -17,17 +26,28 @@ function comprobarDatos(){
 
 function actualizarFormulario() {
 	$.get("Reserva/getHabitaciones.php",mostrarHabitaciones,'json');
+	$.get("Reserva/getParking.php",mostrarParkingDisponibles,'json');
 }
 
 function actualizarComboPrk() {
-	console.log($('[name=estadoParking]:checked').val());
 	if ($('[name=estadoParking]:checked').val()=='si') {
-		//mostrarParkingDisponibles();
+		$.get("Reserva/getParking.php",mostrarParkingDisponibles,'json');
 		selectParking.style.display = "block";
 	}
 	else {
 		selectParking.length = 0;
 		selectParking.style.display = "none";
+	}
+}
+
+function actualizarComboAct() {
+	if ($('[name=estadoActividad]:checked').val()=='si') {
+		$.get("Reserva/getActividades.php",mostrarActividadesDisponibles,'json');
+		selectActividad.style.display = "block";
+	}
+	else {
+		selectActividad.length = 0;
+		selectActividad.style.display = "none";
 	}
 }
 
@@ -68,32 +88,37 @@ function mostrarHabitaciones(oHabitaciones)  {
     
 }
 
-// function habDesParking() {
-    
-//     let selectParking = document.getElementById("selectListaParking");
+function mostrarParkingDisponibles(oParking) {
+	selectParking.length = 0;
+	let aParking = oParking["datos"];
+    let aReserva = oParking["reservas"];
+    let dFechaIni = frmAltaReserva.txtEntrada.value.trim();
+	let dFechaFin = frmAltaReserva.txtSalida.value.trim();
 
-//     if (estadoHabParking.checked) {
-//         mostrarParkingDisponibles();
-//         selectParking.style.display = "block";
-//     }
-//     else {
-//         selectParking.length = 0;
-//         selectParking.style.display = "none";
-//     }
-// }
+    //alert(dFechaIni+" "+dFechaFin);
 
-// function habDesActividad() {
-//     let selectActividad = document.getElementById("selectListaActividad");
+    for (let i = 0; i < aParking.length; i++) {
+        for (let j = 0; j < aReserva.length; j++) {
+            if (aParking[i].id == aReserva[j].numero_parking) {
+                if ((aReserva[j].checkin > dFechaIni && aReserva[j].checkin <= dFechaFin && aReserva[j].checkout >= dFechaFin) || 
+                    (aReserva[j].checkin <= dFechaIni && aReserva[j].checkout >= dFechaFin) || 
+                    (aReserva[j].checkin <= dFechaIni && aReserva[j].checkout >= dFechaIni && aReserva[j].checkout < dFechaFin) || 
+                    (aReserva[j].checkin > dFechaIni && aReserva[j].checkout < dFechaFin)) {
+                    aParking.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+    }
 
-//     if (estadoHabActividad.checked) {
-//         mostrarActividades();
-//         selectActividad.style.display = "block";
-//     }
-//     else {
-//         selectActividad.length = 0;
-//         selectActividad.style.display = "none";
-//     }
-// }
+    for (let i = 0; i < aParking.length; i++) {
+        let opc = document.createElement("option");
+        opc.setAttribute("value", aParking[i].id);
+        let texto = document.createTextNode(aParking[i].id);
+        opc.appendChild(texto);
+        selectParking.appendChild(opc);
+    }
+}
 
 function mostrarRegimenes(oRegimen) {
     let aLista = document.getElementById("selectListaReg");
@@ -106,5 +131,18 @@ function mostrarRegimenes(oRegimen) {
         let texto = document.createTextNode(aRegimen[i].id);
         opc.appendChild(texto);
         aLista.appendChild(opc);
+    }
+}
+
+function mostrarActividadesDisponibles(oActividad) {
+    selectActividad.length = 0;
+    let aActividad = oActividad["datos"];
+
+    for (let i = 0; i < aActividad.length; i++) {
+        let opc = document.createElement("option");
+        opc.setAttribute("value", aActividad[i].nombre);
+        let texto = document.createTextNode(aActividad[i].nombre);
+        opc.appendChild(texto);
+        selectActividad.appendChild(opc);
     }
 }
