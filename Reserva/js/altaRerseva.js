@@ -11,6 +11,8 @@ $("#btnComprobarDatos").click(comprobarDatos);
 $("#txtNumAlta,#txtEntradaAlta,#txtSalidaAlta").blur(actualizarFormulario);
 $('[name=estadoParking]').change(actualizarComboPrk);
 $('[name=estadoActividad]').change(actualizarComboAct);
+$("#p1").text("");
+$("#p2").text("");
 
 var botonAceptar = document.getElementById("btnAceptarAltaReserva");
 var botonComprobar = document.getElementById("btnComprobarDatos");
@@ -74,7 +76,7 @@ function comprobarDatos(){
     document.querySelectorAll("#selectListaActividad option:checked").forEach(eleccion=> aActividadesElegidas.push(buscarActividadSeleccionada(eleccion.value)));
     let sRegimenID = frmAltaReserva.selectListaReg.value.trim();
     let fPrecio = precioTotal(); //funcion totalPrecio
-    //let totalDias = obtenerTotalDiasReserva(dCheckin, dCheckout);
+    let totalDias = obtenerTotalDiasReserva(dCheckin, dCheckout);
 
     if ($('[name=estadoParking]:checked').val()=='no') {
         iParkingID = "NO";
@@ -119,7 +121,10 @@ function comprobarDatos(){
         };
 
         var sParametros = "datos=" + JSON.stringify(oReserva);
-        console.log(sParametros);
+        //console.log(sParametros);
+
+        $("#p1").text("Precio total: "+fPrecio);
+        $("#p2").text("Total de días: "+totalDias);
         
         botonAceptar.disabled = false;
 		botonComprobar.disabled = true;
@@ -295,10 +300,7 @@ function precioTotal(){
 	else {
 		precioParking = 0;
 	}
-    console.log(precioHabitacion);
-    console.log(precioParking);
-    console.log(precioRegimen);
-    console.log(precioActividades);
+
     total = precioHabitacion+precioParking+precioRegimen+precioActividades;
     return total;
 }
@@ -343,6 +345,20 @@ function aceptarAltaReserva(oReserva){
 	$.post("Reserva/altareserva.php", oReserva, respuestaAltaReserva, 'json');
 }
 
+function obtenerTotalDiasReserva(entrada, salida)
+{
+    let ent = new Date(entrada);
+    let sal = new Date(salida);
+
+    ent.getTime();
+    sal.getTime();
+
+    let diff = sal-ent;
+
+    return diff/(1000*60*60*24);
+
+}
+
 function respuestaAltaReserva(oDatos, sStatus, oXHR){
 	if (oDatos.error) {
         alert(oDatos.mensaje);
@@ -350,6 +366,9 @@ function respuestaAltaReserva(oDatos, sStatus, oXHR){
         alert(oDatos.mensaje);
         frmAltaReserva.reset();
         $("#frmAltaReserva").hide("normal");
+
+        $("#p1").text("");
+		$("#p2").text("");
 
         botonAceptar.disabled = true;
 		botonComprobar.disabled = false;
