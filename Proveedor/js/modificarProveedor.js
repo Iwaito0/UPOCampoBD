@@ -3,12 +3,12 @@ $("#btnSelecionarProveedor").click(seleccionarProveedor);
 $("#btnModificarProveedor").click(modificarProveedor);
 $("#btnCancelarProveedor").click(cancelarModificarProveedor);
 
-let botonSeleccionar = document.getElementById("btnSelecionarProveedor");
-let btnModificarCliente = document.getElementById("btnModificarProveedor");
-let btnCacelarModCliente = document.getElementById("btnCancelarProveedor");
-let inputCif = document.getElementById("txtCifModifica");
-let inputNombre = document.getElementById("txtNombreProveedorModifica");
-let inputTelefono = document.getElementById("txtTelefonoProveedorModifica");
+var botonSeleccionar = document.getElementById("btnSelecionarProveedor");
+var btnModificarCliente = document.getElementById("btnModificarProveedor");
+var btnCacelarModCliente = document.getElementById("btnCancelarProveedor");
+var inputCif = document.getElementById("txtCifModifica");
+var inputNombre = document.getElementById("txtNombreProveedorModifica");
+var inputTelefono = document.getElementById("txtTelefonoProveedorModifica");
 
 function seleccionarProveedor(){
 	let sCif = frmModificaProveedor.txtCifModifica.value.trim();
