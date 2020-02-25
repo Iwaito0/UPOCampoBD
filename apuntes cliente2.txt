@@ -310,5 +310,25 @@ function cargarXML(url,funcion) {
         }	
      nuevoajax.send();envio
      }
+//////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
 
+function rellenarDesplegableEventos() {
+    if (localStorage["eventos"] != undefined) {
+        $("#lstEventos").html(localStorage["eventos"]);
+    } else {
+        $.get("./php/getEventoJSON.php", null, procesoRespuestaGetEventos, 'json');
+    }
+}
+
+function procesoRespuestaGetEventos(oDatos) {
+    let datos="";
+    oDatos["datos"].forEach(element =>datos += '<option value="'+element["ID_LUGAR"]+'">'+element["DESCRIPCION"]+'</option>');
+
+   localStorage["eventos"] = datos;
+
+    $("#lstEventos").html(localStorage["eventos"]);
+
+}
 
