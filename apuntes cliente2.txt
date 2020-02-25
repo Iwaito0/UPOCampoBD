@@ -1,0 +1,314 @@
+﻿//Mostrar formulario
+
+$("#altaCliente").click(mostrarAltaCliente);
+		    |
+		    |
+ 		    |
+		    |
+		    V
+
+function mostrarAltaCliente() {
+    $("#formularios form:not('#frmAltaCliente')").hide("normal");
+ 	
+//Formato donde la pagina del formulario empieza con un form
+    
+// Verifico si ya he cargado el formulario antes
+    if ($('#frmAltaCliente').length == 0) {
+
+        $("#formularios").load("Clientes/altaCliente.html",
+            function() {
+                $.getScript("Clientes/js/altaCliente.js");
+                $('#frmAltaCliente').show("normal");
+            });
+        }
+        else
+        {
+
+    // Lo muestro si est・oculto
+    $('#frmAltaCliente').show("normal");
+    }
+}
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+
+Parametos serializados con  llamada get
+
+  // Instanciar objeto Ajax
+            var oAjax = instanciarXHR();
+
+            // Parametros
+            var sParametros = "id="+iID+"&nombre="+sNombre+"&precio="+fPrecio;
+            sParametros = encodeURI(sParametros);
+
+            //Configurar la llamada --> Asincrono por defecto
+            oAjax.open("GET", encodeURI("Actividades/altaActividades.php")+ "?" + sParametros);
+
+            //Asociar manejador de evento de la respuesta
+            oAjax.addEventListener("readystatechange", procesoRespuestaAltaActividad, false);
+
+            //Hacer la llamada
+            oAjax.send();
+
+function procesoRespuestaAltaActividad()
+{
+    var oAjax = this;
+
+    // Proceso la respuesta cuando llega
+    if (oAjax.readyState == 4 && oAjax.status == 200)
+    {
+        var oMensaje = JSON.parse(oAjax.responseText);
+        if (oMensaje.error)
+        {
+            alert(oMensaje.mensaje);
+
+        }
+        else
+        {
+            alert(oMensaje.mensaje);
+            frmAltaActividades.reset();
+            $("#frmAltaActividades").hide("normal");
+        }
+    }
+}
+
+function instanciarXHR() {
+    var xhttp = null;
+
+    if (window.XMLHttpRequest) {
+        xhttp = new XMLHttpRequest();
+    } else // code for IE5 and IE6
+    {
+        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    return xhttp;
+}
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+
+LLamada Ajax on $POST pasando los parametros en fomrato jSon
+
+function aceptarBajaActividad(){
+     // Recoger valores del formulario
+    let iID = frmBajaActividad.txtId.value.trim();
+    if(iID!=""){
+    var sParametros = "datos=" + JSON.stringify(iID);
+
+    $.ajax({url:encodeURI("Actividades/bajaActividad.php"),
+            async: true,
+            data: sParametros,
+            method: "POST",
+            success: respuestaBajaActividad})
+    }
+}
+function respuestaBajaActividad(oDatos){
+
+    oDatos = JSON.parse(oDatos);
+    if (oDatos.error) {
+        alert(oDatos.mensaje);
+    } else {
+        alert(oDatos.mensaje);
+        frmBajaActividad.reset();
+        $("#frmBajaActividad").hide("normal");
+    } 
+
+ 
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+
+Listado
+
+$.get("Actividades/getActividades.php",rellenarCampos,'json');
+
+function rellenarCampos(oDatos, sStatus, oXHR) {
+    let pestana=window.open();
+	//console.log(JSON.stringify(oDatos));
+	pestana.document.write("<html><head><title>Listado General - Actividades</title><link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'></head></html>");
+	//Creacion de la tabla
+    let oTabla=document.createElement("TABLE");
+    oTabla.setAttribute("border","1");
+    oTabla.classList.add("table","table-striped","table-dark");
+    //El encabezado de la tabla
+    let oTHead=oTabla.createTHead();
+    let oFila=oTHead.insertRow(-1);
+    let oCelda=oFila.insertCell(-1);
+    oCelda.textContent="ID";
+    
+    oCelda=oFila.insertCell(-1);
+    oCelda.textContent="Nombre";
+    
+    oCelda=oFila.insertCell(-1);
+    oCelda.textContent="Precio";
+    
+    
+    //El cuerpo de la tabla
+    let oTBody = document.createElement("TBODY");
+    oTabla.appendChild(oTBody);
+    
+    for(let i=0; i<oDatos["datos"].length; i++){
+        let oFila = oTBody.insertRow(-1);
+    
+        let oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oDatos["datos"][i]["id"];
+    
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oDatos["datos"][i]["nombre"];
+
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oDatos["datos"][i]["precio"];
+        
+    }
+    
+    pestana.document.body.append(oTabla);
+}
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+
+$get con datos serializados
+
+function seleccionarActividad(){
+    let iID = frmModificaActividades.txtID.value.trim();
+    $.get("Actividades/getActividadID.php", $("#frmModificaActividades").serialize(),rellenarCampos,'json');
+}
+
+function rellenarCampos(oDatos){
+
+    if (oDatos["datos"] != "") {
+        inputIDActividad.disabled = true;
+        btnSeleccionarActividad.disabled = true;
+
+        inputNombreActividad.disabled = false;
+        inputPrecioActividad.disabled = false;
+        btnAceptarModificarActividad.disabled = false;
+        btnCancelarModificarActividad.disabled = false;
+
+        inputNombreActividad.value = oDatos["datos"][0]["nombre"];
+        inputPrecioActividad.value = oDatos["datos"][0]["precio"];
+    }
+
+    else {
+        alert("No se encuentra ninguna actividad con esa ID");
+
+        cancelarModificarActividad();
+    }
+}
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+$post con objeto literal
+
+function modificarActividad(){
+    let sMensaje="";
+    // Recoger valores del formulario
+    let iID = frmModificaActividades.txtID.value.trim();
+    let sNombre = frmModificaActividades.txtNombre.value.trim();
+    let fPrecio = parseInt(frmModificaActividades.txtPrecioActividad.value.trim());
+
+    if(!/^\d+$/.test(iID)){
+        sMensaje+="El campo ID esta mal.\n";
+        frmModificaActividades.txtID.classList.add("error");
+    }
+    else{
+        frmModificaActividades.txtID.classList.remove("error");  
+    }
+    if(!/^[a-zA-Zﾑ睨鯱橆暲・s]+$/.test(sNombre)){
+        sMensaje+="El campo Nombre esta mal\n";
+        frmModificaActividades.txtNombre.classList.add("error");
+    }
+    else{
+        frmModificaActividades.txtNombre.classList.remove("error");  
+    }
+    if(!/^[0-9]+([.][0-9]+)?$/.test(fPrecio)){
+        sMensaje+="El campo Precio (Recuerde poner el prefijo )\n";
+        frmModificaActividades.txtPrecioActividad.classList.add("error");
+    }
+    else{
+        frmModificaActividades.txtPrecioActividad.classList.remove("error");  
+    }
+    
+
+    if(sMensaje==""){
+        var oActividad = {
+            id: iID,
+            nombre: sNombre,
+            precio: fPrecio,
+        };
+        var sParametros = "datos=" + JSON.stringify(oActividad);
+        $.post("Actividades/modificarActividad.php", sParametros, respuestaModificarActividad, 'json');
+    }
+    else{
+        alert(sMensaje);
+    }
+}
+
+function respuestaModificarActividad(oDatos){
+    if (oDatos.error) {
+        alert(oDatos.mensaje);
+    } else {
+        alert(oDatos.mensaje);
+        frmModificaActividades.reset();
+        $("#frmModificaActividades").hide("normal");
+        cancelarModificarActividad();
+    }  
+}
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+_________________________________________________________________________________________
+
+cargar de datos XML
+
+docObjeto= new ObjetoAjax(); //instanciar objeto
+docObjeto.cargaXML("ejemplo4.xml",recogeDatos); //método para XML-DOM
+function recogeDatos(xmlDoc) { //El parámetro contiene el DOM del XML
+       //elemento de la página donde insertar el archivo.
+       respuesta=document.getElementById("contenido");
+       //A partir del DOM obtenemos los distintos nodos del archivo:
+       //extraemos el contenido de la primera etiqueta "nombre" del XML
+       minombre=xmlDoc.getElementsByTagName("nombre")[0].childNodes[0].nodeValue;
+       //escribimos el resultado en la página
+       respuesta.innerHTML="<p>Nombre :"+minombre+"</p>";
+       //hacemos lo mismo para el resto de etiquetas.
+       miapellido=xmlDoc.getElementsByTagName("apellido")[0].childNodes[0].nodeValue;
+       respuesta.innerHTML+="<p>Apellido :"+miapellido+"</p>";
+       mitelefono=xmlDoc.getElementsByTagName("telefono")[0].childNodes[0].nodeValue;
+       respuesta.innerHTML+="<p>Teléfono :"+mitelefono+"</p>";
+       miemail=xmlDoc.getElementsByTagName("email")[0].childNodes[0].nodeValue;
+       respuesta.innerHTML+="<p>E-mail :"+miemail+"</p>";
+    }
+function ObjetoAjax () {
+     var nuevoajax=creaObjetoAjax()
+     this.objeto=nuevoajax;
+     this.pedirTexto=pedirTextoAjax;
+     this.cargaXML=cargarXML
+     }	
+
+function cargarXML(url,funcion) {
+     var nuevoajax=this.objeto; //crear objeto XMLHttpRequest
+     var funcionXML=funcion //recoger función
+     nuevoajax.open("GET",url,true); //preparar el envio
+     nuevoajax.onreadystatechange=function() { //al cargarse el archivo...
+        if (nuevoajax.readyState==4) {
+           propiedad=nuevoajax.responseXML; //recoger el DOM
+           funcionXML(propiedad); //devolverlo como parámetro.
+           }
+        }	
+     nuevoajax.send();envio
+     }
+
+
