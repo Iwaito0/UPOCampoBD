@@ -79,12 +79,9 @@ $("#listadoParkDispFecha").click(mostrarListadoParkDisp);
 
 $("#listadoParkingReserva").click(mostrarListadoParkRes);
 
-/*
-var menuListarRegRes = document.getElementById("listadoRegimenReserva");
-menuListarRegRes.addEventListener("click", mostrarListadoRegRes, false);
 
-var menuListarActRes = document.getElementById("listadoActividadReserva");
-menuListarActRes.addEventListener("click", mostrarListadoActRes, false);
+$("#listadoRegimenReserva").click(mostrarListadoRegRes);
+
 
 /*------------SELECCIONAR ELEMENTOS MODIFICAR------------*/
 /*
@@ -1701,11 +1698,10 @@ function aceptarListadoParkDispFecha() {
 //---------------LISTADO POR RESERVAS---------------
 */
 function mostrarListadoParkRes(){
-    console.log("aaa");
-    //$.get("Reserva/parkingReservado.php",mostrarParkingReservados,'json');
+    $.get("Reserva/parkingReservado.php",mostrarParkingReservados,'json');
 }
 function mostrarParkingReservados(oDatos){
-    console.log(oDatos["datos"]);
+   console.log(oDatos["datos"]);	
     let pestana=window.open()
     pestana.document.write("<html><head><link rel='icon' href='./img/favicon.png' type='image/png'><title>Listado Filtros - Reservas con Parking</title><link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'></head></html>"); 
     //Creacion de la tabla
@@ -1750,10 +1746,13 @@ function mostrarParkingReservados(oDatos){
     pestana.document.body.append(oTabla);
 }
 
-/*
+
 function mostrarListadoRegRes() {
+    $.get("Reserva/regimenAlimenticio.php",mostrarRegimenAlimenticio,'json');
+}
+function mostrarRegimenAlimenticio(oDatos){
+
     let pestana=window.open();
-    let aRegimen = oUPOCampo.listadoReservaRegimenA();
     pestana.document.write("<html><head><link rel='icon' href='./img/favicon.png' type='image/png'><title>Listado Filtros - Régimen por Reservas</title><link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'></head></html>");
     //Creacion de la tabla
     let oTabla=document.createElement("TABLE");
@@ -1771,64 +1770,25 @@ function mostrarListadoRegRes() {
     let oTBody = document.createElement("TBODY");
     oTabla.appendChild(oTBody);
 
-    for(let i=0; i<aRegimen.length; i++){
+    for(let i=0; i<oDatos["datos"].length; i++){
         let oFila = oTBody.insertRow(-1);
     
         let oCelda = oFila.insertCell(-1);
-        oCelda.textContent = aRegimen[i].id;
+        oCelda.textContent = oDatos["datos"][i]["id"];
     
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = aRegimen[i].precioPersona;
+        oCelda.textContent = oDatos["datos"][i]["precio_persona"];
         
     }
 
     pestana.document.body.append(oTabla);
 }
 
-function mostrarListadoActRes() {
-    let pestana=window.open()
-    let aActividades=oUPOCampo.listadoReservaActividades();
-    pestana.document.write("<html><head><link rel='icon' href='./img/favicon.png' type='image/png'><title>Listado Filtros - Reservas con Activiades</title><link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'></head></html>");
-    //Creacion de la tabla
-    let oTabla=document.createElement("TABLE");
-    oTabla.setAttribute("border","1");
-    oTabla.classList.add("table","table-striped","table-dark");
-    //El encabezado de la tabla
-    let oTHead=oTabla.createTHead();
-    let oFila=oTHead.insertRow(-1);
-    let oCelda=oFila.insertCell(-1);
-    oCelda.textContent="ID";
-    
-    oCelda=oFila.insertCell(-1);
-    oCelda.textContent="Nombre";
-    
-    oCelda=oFila.insertCell(-1);
-    oCelda.textContent="Precio";
-    
-    
-    //El cuerpo de la tabla
-    let oTBody = document.createElement("TBODY");
-    oTabla.appendChild(oTBody);
-    
-    for(let i=0; i<aActividades.length; i++){
-        let oFila = oTBody.insertRow(-1);
-    
-        let oCelda = oFila.insertCell(-1);
-        oCelda.textContent = aActividades[i].id;
-    
-        oCelda = oFila.insertCell(-1);
-        oCelda.textContent = aActividades[i].nombre;
 
-        oCelda = oFila.insertCell(-1);
-        oCelda.textContent = aActividades[i].precio;
-        
-    }
-    
-    pestana.document.body.append(oTabla);
-}
+
 
 //Mostrar Formularios
-*/
+
 function mostrarAltaCliente() {
     $("#formularios form:not('#frmAltaCliente')").hide("normal");
  
