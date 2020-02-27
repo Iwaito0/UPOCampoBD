@@ -13,30 +13,13 @@
 	$sql = "SELECT * FROM regimen_alimentario";
 	$resultados = mysqli_query($conexion,$sql) or die(mysqli_error($conexion));
 
-	if ($resultados){ // Si hay resultados
+	$datos = "";
 
-	    $datos = [];
-
-	    while ($fila = mysqli_fetch_array($resultados)) {
-	       // Almacenamos en un array cada una de las filas que vamos leyendo del recordset.
-	        $datos[] = $fila;
-	    }
+	while ($fila = mysqli_fetch_array($resultados)) {
+	    $datos .= '<option value="'.$fila["id"].'">'.$fila["id"].'</option>';
 	}
+
+	echo $datos;
 
 	mysqli_close($conexion);
-
-	enviarResultados($resultados,$datos,$conexion);
-
-	function enviarResultados($resultados,$datos,$conexion){
-	    // Generar la respuesta
-	    header('Content-Type: application/json');
-
-	    if ($resultados ){ 
-	        $respuesta["datos"] = $datos;
-	    } else {
-	        $respuesta["datos"] = [];
-	    }
-
-	    echo json_encode($respuesta);
-	}
 ?>
