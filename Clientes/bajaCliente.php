@@ -1,34 +1,27 @@
 <?php
+	// Configuración BASE DE DATOS MYSQL
+	$servidor  = "localhost";
+	$basedatos = "upocampo";
+	$usuario   = "root";
+	$password  = "";
 
-// Configuración BASE DE DATOS MYSQL
-$servidor  = "localhost";
-$basedatos = "upocampo";
-$usuario   = "root";
-$password  = "";
+	// Creamos la conexión al servidor.
+	$conexion = mysqli_connect($servidor, $usuario, $password,$basedatos) or die(mysqli_error($conexion));
+	mysqli_query($conexion,"utf8");
 
-// Creamos la conexión al servidor.
-$conexion = mysqli_connect($servidor, $usuario, $password,$basedatos) or die(mysqli_error($conexion));
-mysqli_query($conexion,"utf8");
-
-
-echo "<pre>";
-print_r($_POST["datos"]);
-echo "</pre>";
-
-$sql='DELETE FROM `cliente` WHERE dni='.$_POST["datos"];
-echo $sql;
-$resultados = mysqli_query($conexion,$sql) or die(mysqli_error($conexion));
+	$sql='DELETE FROM `cliente` WHERE dni='.$_POST["datos"];
+	$resultados = mysqli_query($conexion,$sql) or die(mysqli_error($conexion));
 
 
-if ($resultados){
-    $respuesta["error"] = 0;
-    $respuesta["mensaje"] = "Baja realizada"; 
-} else {
-    $respuesta["error"] = 1;
-    $respuesta["mensaje"] = "Error en el proceso de baja: ".mysqli_error($conexion);
-}
+	if ($resultados){
+	    $respuesta["error"] = 0;
+	    $respuesta["mensaje"] = "Baja realizada"; 
+	} else {
+	    $respuesta["error"] = 1;
+	    $respuesta["mensaje"] = "Error en el proceso de baja: ".mysqli_error($conexion);
+	}
 
-echo json_encode($respuesta);
+	echo json_encode($respuesta);
 
-mysqli_close($conexion);
+	mysqli_close($conexion);
 ?>
