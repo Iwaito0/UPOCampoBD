@@ -13,30 +13,26 @@
 	$sql = "SELECT * FROM proveedor";
 	$resultados = mysqli_query($conexion,$sql) or die(mysqli_error($conexion));
 
-	if ($resultados){ // Si hay resultados
+	$XML ='<?xml version="1.0" encoding="UTF-8"?>';
+	$XML .='<datos>';
 
-	    $datos = [];
-
-	    while ($fila = mysqli_fetch_array($resultados)) {
-	       // Almacenamos en un array cada una de las filas que vamos leyendo del recordset.
-	        $datos[] = $fila;
-	    }
+	while ($fila = mysqli_fetch_array($resultados)) {
+	    $XML .='<proveedor>';
+	        $XML .='<cif>'.$fila["CIF"].'</cif>';
+	        $XML .='<nombre>'.$fila["nombre"].'</nombre>';
+	        $XML .='<telefono>'.$fila["telefono"].'</telefono>';
+	    $XML .='</proveedor>';
 	}
+
+	$XML .='</datos>';
+
+	// Cabecera de respuesta indicando que el contenido de la respuesta es XML
+	header("Content-Type: text/xml");
+	// Para que el navegador no haga cache de los datos devueltos por la página PHP.
+	header('Cache-Control: no-cache, must-revalidate');
+	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
+	echo $XML;
 
 	mysqli_close($conexion);
-
-	enviarResultados($resultados,$datos,$conexion);
-
-	function enviarResultados($resultados,$datos,$conexion){
-	    // Generar la respuesta
-	    header('Content-Type: application/json');
-
-	    if ($resultados ){ 
-	        $respuesta["datos"] = $datos;
-	    } else {
-	        $respuesta["datos"] = [];
-	    }
-
-	    echo json_encode($respuesta);
-	}
 ?>
