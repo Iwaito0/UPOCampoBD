@@ -1,10 +1,10 @@
 "use strict";
 
+$.get("Proveedor/getProveedores.php",rellenarCampos,'xml');
 
-$.get("Proveedor/getProveedores.php",rellenarCampos,'json');
-
-function rellenarCampos(oDatos, sStatus, oXHR) {
+function rellenarCampos(oXML) {
     let pestana=window.open();
+    var oOptions = oXML.querySelectorAll("proveedor");
 	//console.log(JSON.stringify(oDatos));
 	pestana.document.write("<html><head><title>Listado General - Proveedores</title><link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'></head></html>");
 	let oTabla=document.createElement("TABLE");
@@ -27,17 +27,17 @@ function rellenarCampos(oDatos, sStatus, oXHR) {
     let oTBody = document.createElement("TBODY");
     oTabla.appendChild(oTBody);
     
-    for(let i=0; i<oDatos["datos"].length; i++){
+    for(let i=0; i<oOptions.length; i++){
         let oFila = oTBody.insertRow(-1);
     
         let oCelda = oFila.insertCell(-1);
-        oCelda.textContent = oDatos["datos"][i]["CIF"];
+        oCelda.textContent = oOptions[i].querySelector("cif").textContent;
     
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = oDatos["datos"][i]["nombre"];
+        oCelda.textContent = oOptions[i].querySelector("nombre").textContent;
 
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = oDatos["datos"][i]["telefono"];
+        oCelda.textContent = oOptions[i].querySelector("telefono").textContent;
         
     }
     
