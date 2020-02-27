@@ -3,7 +3,15 @@ $("#btnSeleccionarCliente").click(seleccionarCliente);
 $("#btnAceptarModificarCliente").click(modificarCliente);
 $("#btnCancelarModificarCliente").click(cancelarModificarCliente);
 
-
+var botonSeleccionar = document.getElementById("btnSeleccionarCliente");
+var btnModificarCliente = document.getElementById("btnAceptarModificarCliente");
+var btnCacelarModCliente = document.getElementById("btnCancelarModificarCliente");
+var inputNif = document.getElementById("txtNifModificar");
+var inputNombre = document.getElementById("txtNombreClienteModificar");
+var inputTelefono = document.getElementById("txtTelefonoClienteModificar");
+var inputDireccion = document.getElementById("txtDireccionModificar");
+var inputEmail = document.getElementById("txtEmailModificar");
+var inputNumTarjeta = document.getElementById("txtNTarjetaModificar");
 
 
 function seleccionarCliente(){
@@ -12,15 +20,6 @@ function seleccionarCliente(){
 }
 
 function rellenarCampos(oDatos, sStatus, oXHR){
-    let botonSeleccionar = document.getElementById("btnSeleccionarCliente");
-    let btnModificarCliente = document.getElementById("btnAceptarModificarCliente");
-    let btnCacelarModCliente = document.getElementById("btnCancelarModificarCliente");
-    let inputNif = document.getElementById("txtNifModificar");
-    let inputNombre = document.getElementById("txtNombreClienteModificar");
-    let inputTelefono = document.getElementById("txtTelefonoClienteModificar");
-    let inputDireccion = document.getElementById("txtDireccionModificar");
-    let inputEmail = document.getElementById("txtEmailModificar");
-    let inputNumTarjeta = document.getElementById("txtNTarjetaModificar");
 
     if (oDatos["datos"] != "") {
         inputNif.disabled = true;
@@ -131,21 +130,23 @@ function respuestaModificarCliente(oDatos){
         alert(oDatos.mensaje);
     } else {
         alert(oDatos.mensaje);
-        frmBajaCliente.reset();
-        $("#frmBajaCliente").hide("normal");
+        frmModificarCliente.reset();
+
+        inputNif.disabled = false;
+	    botonSeleccionar.disabled = false;
+
+	    inputNombre.disabled = true;
+	    inputTelefono.disabled = true;
+	    inputDireccion.disabled = true;
+	    inputEmail.disabled = true;
+	    inputNumTarjeta.disabled = true;
+	    btnModificarCliente.disabled = true;
+	    btnCacelarModCliente.disabled = true;
+        
+        $("#frmModificarCliente").hide("normal");
     }  
 }
 function cancelarModificarCliente(){
-    let botonSeleccionar = document.getElementById("btnSeleccionarCliente");
-    let btnModificarCliente = document.getElementById("btnAceptarModificarCliente");
-    let btnCacelarModCliente = document.getElementById("btnCancelarModificarCliente");
-    let inputNif = document.getElementById("txtNifModificar");
-    let inputNombre = document.getElementById("txtNombreClienteModificar");
-    let inputTelefono = document.getElementById("txtTelefonoClienteModificar");
-    let inputDireccion = document.getElementById("txtDireccionModificar");
-    let inputEmail = document.getElementById("txtEmailModificar");
-    let inputNumTarjeta = document.getElementById("txtNTarjetaModificar");
-
     inputNif.disabled = false;
     botonSeleccionar.disabled = false;
 
