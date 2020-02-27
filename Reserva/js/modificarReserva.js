@@ -1,6 +1,21 @@
 "use strict"
+mostrarHab();
+
+function mostrarHab(){
+	if (localStorage["regimen"] != undefined) {
+        $("#selectListaRegModificar").html(localStorage["regimen"]);
+    } else {
+        $.get("Reserva/getRegimen.php",mostrarRegimenes,'html');
+    }
+}
+
+function mostrarRegimenes(oDatos) {
+    localStorage["regimen"] = oDatos;
+
+    $("#selectListaRegModificar").html(localStorage["regimen"]);
+}
+
 $.get("Reserva/getHabitaciones.php",mostrarHabitaciones,'json');
-$.get("Reserva/getRegimen.php",mostrarRegimenes,'json');
 $.get("Reserva/getParking.php",mostrarParkingDisponibles,'json');
 $.get("Reserva/getActividades.php",mostrarActividadesDisponibles,'json');
 
@@ -257,26 +272,6 @@ function mostrarHabitaciones(oHabitaciones)  {
 	let aHabitaciones = oHabitaciones["datos"];
 	let aReserva = oHabitaciones["reservas"];
 	let aDisponibles = [];
-	/*let dFechaIni = frmAltaReserva.txtEntrada.value.trim();
-	let dFechaFin = frmAltaReserva.txtSalida.value.trim();
-	let iNumMaxPersonas = parseInt(frmAltaReserva.txtNum.value.trim());*/
-	/*for (let i = 0; i < aHabitaciones.length; i++) {
-	    for (let j = 0; j < aReserva.length; j++) {
-	        if (aHabitaciones[i].id == aReserva[j].numero_habitacion) {
-	         	if ((aReserva[j].checkin > dFechaIni && aReserva[j].checkin <= dFechaFin && aReserva[j].checkout >= dFechaFin) || 
-	         		(aReserva[j].checkin <= dFechaIni && aReserva[j].checkout >= dFechaFin) || 
-	         		(aReserva[j].checkin <= dFechaIni && aReserva[j].checkout >= dFechaIni && aReserva[j].checkout < dFechaFin) || 
-	         		(aReserva[j].checkin > dFechaIni && aReserva[j].checkout < dFechaFin)) {
-	         		aHabitaciones.splice(i, 1);
-	             	//i--;
-	         	}
-	        }
-	    }
-	    if (aHabitaciones[i].ocupacion_max < iNumMaxPersonas) {
-	 		aHabitaciones.splice(i, 1);
-	     	i--;
-	 	}
-	}*/
 
 	for (let i = 0; i < aHabitaciones.length; i++) {
 	    let opc = document.createElement("option");
@@ -288,7 +283,7 @@ function mostrarHabitaciones(oHabitaciones)  {
     
 }
 
-function mostrarRegimenes(oRegimen) {
+/*function mostrarRegimenes(oRegimen) {
     let aLista = document.getElementById("selectListaRegModificar");
 	aLista.length = 0;
 	arrayReg = oRegimen["datos"];
@@ -301,7 +296,7 @@ function mostrarRegimenes(oRegimen) {
         opc.appendChild(texto);
         aLista.appendChild(opc);
     }
-}
+}*/
 
 function mostrarParkingDisponibles(oParking) {
 	selectParking.length = 0;
