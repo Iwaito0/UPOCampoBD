@@ -1,5 +1,5 @@
 "use strict"
-$("#frmBajaCliente").click(aceptarBajaCliente);
+$("#btnAceptarBajaCliente").click(aceptarBajaCliente);
 
 function aceptarBajaCliente(){
      // Recoger valores del formulario
