@@ -1,8 +1,6 @@
 "use strict";
 //# sourceURL=codigo.js;
 //Programa Princiapl
-var oUPOCampo = new UpoCampo();
-var divListado = document.getElementById("listado");
 
 /*--------------EVENTOS DE MENU----------------*/
 

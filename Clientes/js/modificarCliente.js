@@ -127,7 +127,6 @@ function rellenarCampos(oDatos, sStatus, oXHR){
     }
 
 function respuestaModificarCliente(oDatos){
-    console.log(oDatos);
     if (oDatos.error) {
         alert(oDatos.mensaje);
     } else {

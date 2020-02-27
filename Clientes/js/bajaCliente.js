@@ -10,7 +10,7 @@ function aceptarBajaCliente(){
     $.post("Clientes/bajaCliente.php", sParametros, respuestaBajaCliente, 'json');  
     }
 }
-function respuestaBajaCliente(){
+function respuestaBajaCliente(oDatos){
     if (oDatos.error) {
         alert(oDatos.mensaje);
     } else {
