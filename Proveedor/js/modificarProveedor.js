@@ -86,6 +86,15 @@ function respuestaModificarProveedor(oDatos){
     } else {
         alert(oDatos.mensaje);
         frmModificaProveedor.reset();
+
+        inputCif.disabled = false;
+        botonSeleccionar.disabled = false;
+
+        inputNombre.disabled = true;
+        inputTelefono.disabled = true;
+        btnModificarCliente.disabled = true;
+        btnCacelarModCliente.disabled = true;
+        
         $("#frmModificaProveedor").hide("normal");
     }  
 }
